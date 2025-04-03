@@ -1,89 +1,84 @@
 ---
 layout: cv
-title: Isaac Newtons's CV
+title: "Luis Rivera - Resume"
+author: "Luis Rivera"
+date: today
+format: pdf
 ---
-# Isaac Newton
-Physicist, Mathematician, Cambridge professor.
 
-<div id="webaddress">
-<a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
-| <a href="http://en.wikipedia.org/wiki/Isaac_Newton">My wikipedia page</a>
-</div>
+# Contact Information
 
+- **Phone:** 3039606369  
+- **Email:** lrivera30ds@gmail.com  
+- **LinkedIn:** [linkedin.com/in/luisrivera98](https://linkedin.com/in/luisrivera98)  
 
-## Currently
+# Areas of Expertise
 
-Standing on the shoulders of giants
+- Algorithm tools  
+- Design metrics  
+- Object-oriented programming  
+- Data spreadsheet summarization  
+- Probability distributions  
+- Hypothesis testing  
+- R programming  
+- Statistical testing  
+- Data analysis/evaluation  
+- Regression modeling  
+- Research techniques  
+- Research design  
+- Process planning  
+- Quality management  
+- Forecasting tools  
+- Policy analysis  
+- SQL commands, joins  
+- Database design  
+- Data merging  
+- HTML proficiency  
+- CSS styling proficiency  
 
-### Specialized in
+# Education
 
-Laws of motion, gravitation, minting coins, disliking [Robert Hooke](http://en.wikipedia.org/wiki/Robert_Hooke)
+## Bachelor of Arts in Public Policy and Administration
+**Brigham Young University - Idaho** | Rexburg, ID  
+**Sep 2018 - Dec 2021**  
+- Emphasis in Public Administration  
+- **GPA:** 3.89  
+- Academic Scholarship - Thomas E. Ricks Grant  
 
+## Bachelor of Science in Data Science Online Coursework
+**Brigham Young University - Idaho** | Rexburg, ID  
+**Aug 2024 - Present**  
+- Additional courses taken through the BYU-I BS in Data Science major as prerequisite coursework for MS in Data Science.  
 
-### Research interests
+# Professional Experience
 
-Cooling, power series, optics, alchemy, planetary motions, apples.
+## Admin Analyst I  
+**New Jersey Department of Transportation** | Ewing, NJ  
+**Jan 2023 - May 2024**  
+- Developed internal protocols for managing $3.5 million in annual federal funds related to the Intelligent Transportation Resource Center.
+- Managed federal contracts using the Financial Management Information System.
+- Conducted research on Intelligent Transportation Systems to improve traffic flow and safety.
+- Provided support in developing the annual in-house budget for the Transportation Mobility Research Unit.
+- Participated in State Transportation Innovation Council quarterly meetings.
 
+## Instructor Eval/Statistics TA  
+**Brigham Young University-Idaho** | Rexburg, ID  
+**Apr 2021 - Dec 2021**  
+- Assigned grades for student coursework.
+- Conducted exam review sessions and tutoring for a class of 50 students.
+- Monitored BYU-I online instructor presence for 24 instructors daily.
 
-## Education
+## Custodian  
+**Brigham Young University-Idaho** | Rexburg, ID  
+**Jan 2019 - Apr 2020**  
+- Performed routine cleaning and maintenance tasks across campus buildings.
+- Managed waste disposal and maintained cleanliness in waste areas.
+- Assisted with event setups and post-event cleanups.
 
-`1654-1660`
-__The King's School, Grantham.__
-
-`June 1661 - now`
-__Trinity College, Cambridge__
-
-- Sizar
-
-`1667 - death`
-__Trinity College, Cambridge__
-
-- Fellow
-
-
-
-## Awards
-
-`2012`
-President, *Royal Society*, London, UK
-
-Associate, *French Academy of Science*, Paris, France
-
-
-
-## Publications
-
-<!-- A list is also available [online](http://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
-
-### Journals
-
-`1669`
-Newton Sir I, De analysi per æquationes numero terminorum infinitas. 
-
-`1669`
-Lectiones opticæ.
-
-etc. etc. etc.
-
-### Patents
-
-`2012`
-Infinitesimal calculus for solutions to physics problems, [SMBC](http://www.techdirt.com/articles/20121011/09312820678/if-patents-had-been-around-time-newton.shtml) patent 001
-
-
-## Occupation
-
-`1600`
-__Royal Mint__, London
-
-- Warden
-- Minted coins
-
-`1600`
-__Lucasian professor of Mathematics__, Cambridge University
-
-
-
-<!-- ### Footer
-
-Last updated: May 2013 -->
+## Ambassador  
+**Church of Jesus Christ of Latter-day Saints** | San Fernando, CA  
+**Aug 2016 - Jul 2018**  
+- Oversaw the well-being of 30 full-time ambassadors.
+- Provided community service and humanitarian aid.
+- Shared the teachings of Jesus Christ and engaged in religious education.
+- Trained ambassadors for missionary life and responsibilities.
