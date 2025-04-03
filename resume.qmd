@@ -3,14 +3,10 @@ layout: cv
 title: "Luis Rivera - Resume"
 author: "Luis Rivera"
 date: today
-format: pdf
 ---
 
-# Contact Information
-
-- **Phone:** 3039606369  
-- **Email:** lrivera30ds@gmail.com  
-- **LinkedIn:** [linkedin.com/in/luisrivera98](https://linkedin.com/in/luisrivera98)  
+Luis Rivera  
+3039606369 | lrivera30ds@gmail.com | [linkedin.com/in/luisrivera98](https://linkedin.com/in/luisrivera98)  
 
 # Areas of Expertise
 
