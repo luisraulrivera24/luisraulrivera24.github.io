@@ -3,7 +3,7 @@ title: "Can You Predict That? Predicting Home Prices with Machine Learning"
 author: "Luis Rivera"
 format:
   html:
-    self-contained: false
+    self-contained: true
     page-layout: full
     title-block-banner: true
     toc: true
@@ -194,6 +194,9 @@ results = results.drop(['STATEFP10', 'ZCTA5CE10', 'GEOID10','CLASSFP10', 'MTFCC1
 # Tell GeoPandas which column holds the geometry
 results = gpd.GeoDataFrame(results, geometry='geometry')
 
+# Simplify geometry to reduce file size (tolerance controls precision)
+results['geometry'] = results['geometry'].simplify(tolerance=0.01, preserve_topology=True)
+
 # results
 ```
 
@@ -249,16 +252,9 @@ tooltip = GeoJson(
     )
 ).add_to(m1)
 
-m1.save("folium_map.html")
+m1
  
 ```
-
-:::{.column width="100%"}
-
-<iframe src="folium_map.html" width="100%" height="70%" style="border:none;"></iframe>
-
-:::
-
 ```{python}
 
 # m2 = folium.Map(location=[31.9686, -99.9018], zoom_start=6.35, tiles='OpenStreetMap', width="42%", height="70%")
