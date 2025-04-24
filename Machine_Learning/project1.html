@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="[STUDENT NAME]">
+<meta name="author" content="Luis Rivera">
 
-<title>Client Report - [Insert Project Title] – Luis Rivera - Data Science Portfolio</title>
+<title>Can You Predict That? – Luis Rivera - Data Science Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -4787,8 +4821,8 @@ vertical-align: -.125em;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-right">
-      <h1 class="title">Client Report - [Insert Project Title]</h1>
-            <p class="subtitle lead">Course DS 250</p>
+      <div class="quarto-title-block"><div><h1 class="title">Can You Predict That?</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> See code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+            <p class="subtitle lead">Predicting Home Prices with Machine Learning</p>
                       </div>
   </div>
     
@@ -4798,7 +4832,7 @@ vertical-align: -.125em;
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>[STUDENT NAME] </p>
+               <p>Luis Rivera </p>
             </div>
     </div>
       
@@ -4871,11 +4905,299 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#paste-in-a-template" id="toc-paste-in-a-template">Paste in a template</a></li>
+  <li><a href="#home-prices-in-texas" id="toc-home-prices-in-texas">Home Prices in Texas</a></li>
   </ul>
 </nav>
-<section id="paste-in-a-template" class="level3">
-<h3 class="anchored" data-anchor-id="paste-in-a-template">Paste in a template</h3>
+<div id="8af753d1" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> folium.plugins <span class="im">import</span> DualMap</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># libraries for machine learning model and folium map</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># from sklearn.preprocessing import OneHotEncoder</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> xgboost <span class="im">import</span> XGBRegressor</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, mean_absolute_error, r2_score</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> folium.features <span class="im">import</span> GeoJson, GeoJsonTooltip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="home-prices-in-texas" class="level2">
+<h2 class="anchored" data-anchor-id="home-prices-in-texas">Home Prices in Texas</h2>
+<p><strong>What is the average home price by Zipcode in Texas?</strong></p>
+<p>__</p>
+<div id="721413da" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I am reading in my data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;./ml_datasets/US Homes Data (For Sale Properties).csv&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># I filter to only keep data from the state of Texas, specifically for homes that are for sale</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[(df[<span class="st">&quot;state&quot;</span>].isin([<span class="st">&quot;TX&quot;</span>])) <span class="op">&amp;</span> (df[<span class="st">&quot;property_status&quot;</span>].isin([<span class="st">&quot;FOR_SALE&quot;</span>])) <span class="op">&amp;</span> (<span class="op">~</span>df[<span class="st">&quot;living_space&quot;</span>].isin([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]))]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># I only look at apartments, condo, manufactured, multi_family, single_family, and townhouse homes</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[<span class="op">~</span>df[<span class="st">&#39;property_type&#39;</span>].isin([<span class="st">&#39;LOT&#39;</span>])]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># I filter out the rows with negative landscape values</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[<span class="op">~</span>df[<span class="st">&#39;land_space&#39;</span>].isin([<span class="op">-</span><span class="fl">10890.0</span>])]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I change acres to square feet in the land_space column</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;land_space&#39;</span>] <span class="op">=</span> <span class="bu">round</span>(df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: row[<span class="st">&#39;land_space&#39;</span>] <span class="op">*</span> <span class="dv">43560</span> <span class="cf">if</span> row[<span class="st">&#39;land_space_unit&#39;</span>] <span class="op">==</span> <span class="st">&#39;acres&#39;</span> <span class="cf">else</span> row[<span class="st">&#39;land_space&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>),<span class="dv">2</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I make the price_per_unit column more accurate</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;price_per_unit&#39;</span>] <span class="op">=</span> <span class="bu">round</span>(df[<span class="st">&#39;price&#39;</span>] <span class="op">/</span> df[<span class="st">&#39;living_space&#39;</span>], <span class="dv">2</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;price_per_unit&#39;</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: <span class="bu">round</span>(row[<span class="st">&#39;price&#39;</span>] <span class="op">/</span> row[<span class="st">&#39;living_space&#39;</span>], <span class="dv">2</span>) <span class="cf">if</span> (row[<span class="st">&#39;living_space&#39;</span>] <span class="op">&gt;</span> <span class="dv">0</span>) <span class="kw">and</span> <span class="kw">not</span> pd.isna(row[<span class="st">&#39;living_space&#39;</span>]) <span class="cf">else</span> row[<span class="st">&#39;price_per_unit&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I drop the extra columns that I do not need, and can drop now</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop([<span class="st">&#39;property_url&#39;</span>,<span class="st">&#39;property_id&#39;</span>, <span class="st">&#39;address&#39;</span>, <span class="st">&#39;street_name&#39;</span>, <span class="st">&#39;apartment&#39;</span>, <span class="st">&#39;city&#39;</span>, <span class="st">&#39;state&#39;</span>,<span class="st">&#39;land_space_unit&#39;</span>, <span class="st">&#39;broker_id&#39;</span>, <span class="st">&#39;property_status&#39;</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>              <span class="st">&#39;year_build&#39;</span>, <span class="st">&#39;total_num_units&#39;</span> , <span class="st">&#39;listing_age&#39;</span>, <span class="st">&#39;RunDate&#39;</span>, <span class="st">&#39;agency_name&#39;</span>, <span class="st">&#39;agent_name&#39;</span>, <span class="st">&#39;agent_phone&#39;</span>, <span class="st">&#39;latitude&#39;</span>, <span class="st">&#39;longitude&#39;</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>              <span class="st">&#39;price_per_unit&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># One-hot encoding</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.get_dummies(df, columns<span class="op">=</span>[<span class="st">&#39;property_type&#39;</span>], dtype<span class="op">=</span><span class="st">&#39;int&#39;</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I change the name of my postcode column to zip_code</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>df.rename(columns<span class="op">=</span>{<span class="st">&#39;postcode&#39;</span>: <span class="st">&#39;zip_code&#39;</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="b81aa9d0" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Machine learning preparation.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Turning the city column to a categorical type</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This is important for XGBoost to handle the data correctly</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># df[&#39;city&#39;] = df[&#39;city&#39;].astype(&#39;category&#39;)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ml_df = df.copy()</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the GeoJSON shape file for Texas ZIP codes</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">&quot;https://raw.githubusercontent.com/OpenDataDE/State-zip-code-GeoJSON/refs/heads/master/tx_texas_zip_codes_geo.min.json&quot;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>zip_shapes <span class="op">=</span> gpd.read_file(url)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure ZIP codes are strings (important for matching)</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>df[<span class="st">&#39;zip_code&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;zip_code&#39;</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>zip_shapes[<span class="st">&#39;ZCTA5CE10&#39;</span>] <span class="op">=</span> zip_shapes[<span class="st">&#39;ZCTA5CE10&#39;</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I do a left join (everything from the ml_df and only matching rows from zip_shapes)</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>new_df <span class="op">=</span> pd.merge(df,zip_shapes, left_on<span class="op">=</span><span class="st">&#39;zip_code&#39;</span>, right_on<span class="op">=</span><span class="st">&#39;ZCTA5CE10&#39;</span>, how<span class="op">=</span><span class="st">&#39;left&#39;</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I drop the extra columns that I do not need</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>ml_clean <span class="op">=</span> new_df.drop([<span class="st">&#39;STATEFP10&#39;</span>, <span class="st">&#39;ZCTA5CE10&#39;</span>, <span class="st">&#39;GEOID10&#39;</span>,<span class="st">&#39;CLASSFP10&#39;</span>, <span class="st">&#39;MTFCC10&#39;</span>, <span class="st">&#39;FUNCSTAT10&#39;</span>, <span class="st">&#39;ALAND10&#39;</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&#39;AWATER10&#39;</span>, <span class="st">&#39;INTPTLAT10&#39;</span>, <span class="st">&#39;INTPTLON10&#39;</span>, <span class="st">&#39;PARTFLG10&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Tell GeoPandas which column holds the geometry</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>ml_clean <span class="op">=</span> gpd.GeoDataFrame(ml_clean, geometry<span class="op">=</span><span class="st">&#39;geometry&#39;</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the current coordinate reference system (CRS)</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># print(ml_clean.crs)</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Now I can safely extract spatial features</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract spatial features</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate centroid coordinates in meters</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>ml_clean[<span class="st">&#39;zip_centroid_lon&#39;</span>] <span class="op">=</span> ml_clean.geometry.centroid.x</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>ml_clean[<span class="st">&#39;zip_centroid_lat&#39;</span>] <span class="op">=</span> ml_clean.geometry.centroid.y</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I drop the geometry column (not needed for modeling) and city column (one-hot encoding and label encoding are not ideal for this column)</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>ml_clean <span class="op">=</span> ml_clean.drop(columns<span class="op">=</span>[<span class="st">&#39;geometry&#39;</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="9410bf0c" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop zipcode for model training</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> ml_clean.drop(columns<span class="op">=</span>[<span class="st">&#39;price&#39;</span>])</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> ml_clean[<span class="st">&#39;price&#39;</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I make the target variable a log to improve my machine learning model performance</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.log1p(y)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>X_train_full, X_test_full, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I save the zipcodes separately before I drop them for modeling</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Zipcodes aligned to my training set</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>zip_train <span class="op">=</span> X_train_full[<span class="st">&#39;zip_code&#39;</span>].reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Zipcodes aligned to my test set</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>zip_test <span class="op">=</span> X_test_full[<span class="st">&#39;zip_code&#39;</span>].reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I remove the zipcodes from the actual training data</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> X_train_full.drop(columns<span class="op">=</span>[<span class="st">&#39;zip_code&#39;</span>])</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> X_test_full.drop(columns<span class="op">=</span>[<span class="st">&#39;zip_code&#39;</span>])</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co"># create model instance</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>xgb <span class="op">=</span> XGBRegressor(n_estimators<span class="op">=</span><span class="dv">350</span>, max_depth<span class="op">=</span><span class="dv">10</span>, learning_rate<span class="op">=</span><span class="fl">.01</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co"># fit model</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>xgb.fit(X_train, y_train)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># make predictions</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> xgb.predict(X_test)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Mean Absolute Error (MAE):&quot;</span>, mean_absolute_error(y_test, y_pred))</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Mean Squared Error (MSE):&quot;</span>, mean_squared_error(y_test, y_pred))</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> np.sqrt(mean_squared_error(y_test, y_pred))</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Root Mean Squared Error (RMSE):&quot;</span>, rmse)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;R² Score:&quot;</span>, r2_score(y_test, y_pred))</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># # undo the log1p transformation to get the actual price predictions</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co"># y_pred = np.expm1(y_pred)</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co"># y_test = np.expm1(y_test)</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;zip_code&#39;</span>: zip_test,</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;prediction&#39;</span>: y_pred,</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;actual_price&#39;</span>: y_test.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="co"># results</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I group by zip_code column and calculate the mean of the prediction and actual values</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> results.groupby(<span class="st">&#39;zip_code&#39;</span>)[[<span class="st">&#39;prediction&#39;</span>, <span class="st">&#39;actual_price&#39;</span>]].mean()</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Round to two decimal places</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>results[<span class="st">&#39;actual_price&#39;</span>] <span class="op">=</span> results[<span class="st">&#39;actual_price&#39;</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I change the name of my predicition column and actual price column</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> results.rename(columns<span class="op">=</span>{<span class="st">&#39;prediction&#39;</span>: <span class="st">&#39;average_price_prediction_log&#39;</span>, <span class="st">&#39;actual_price&#39;</span>: <span class="st">&#39;actual_average_price_log&#39;</span>})</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> pd.DataFrame(results).reset_index()</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="co"># undo the log1p transformation to get the actual price predictions in different columns</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>results[<span class="st">&#39;average_price_prediction&#39;</span>] <span class="op">=</span> np.expm1(results[<span class="st">&#39;average_price_prediction_log&#39;</span>])</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>results[<span class="st">&#39;actual_average_price&#39;</span>] <span class="op">=</span> np.expm1(results[<span class="st">&#39;actual_average_price_log&#39;</span>])</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I do a left join (everything from the ml_df and only matching rows from zip_shapes)</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> pd.merge(results,zip_shapes, left_on<span class="op">=</span><span class="st">&#39;zip_code&#39;</span>, right_on<span class="op">=</span><span class="st">&#39;ZCTA5CE10&#39;</span>, how<span class="op">=</span><span class="st">&#39;left&#39;</span>)</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I drop the extra columns that I do not need</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> results.drop([<span class="st">&#39;STATEFP10&#39;</span>, <span class="st">&#39;ZCTA5CE10&#39;</span>, <span class="st">&#39;GEOID10&#39;</span>,<span class="st">&#39;CLASSFP10&#39;</span>, <span class="st">&#39;MTFCC10&#39;</span>, <span class="st">&#39;FUNCSTAT10&#39;</span>, <span class="st">&#39;ALAND10&#39;</span>,</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&#39;AWATER10&#39;</span>, <span class="st">&#39;INTPTLAT10&#39;</span>, <span class="st">&#39;INTPTLON10&#39;</span>, <span class="st">&#39;PARTFLG10&#39;</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Tell GeoPandas which column holds the geometry</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> gpd.GeoDataFrame(results, geometry<span class="op">=</span><span class="st">&#39;geometry&#39;</span>)</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="co"># results</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean Absolute Error (MAE): 0.22063838742237502
+Mean Squared Error (MSE): 0.1207861593836633
+Root Mean Squared Error (RMSE): 0.34754303241996276
+R² Score: 0.8472178918654716</code></pre>
+</div>
+</div>
+<div id="5b628bf2" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # The actual heat map</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # geojson_data = tacos.__geo_interface__  # convert GeoDataFrame to GeoJSON</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # Create a map centered over Texas</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># m1 = folium.Map(location=[31.9686, -99.9018], zoom_start=6.35, tiles=&#39;OpenStreetMap&#39;, width=&quot;42%&quot;, height=&quot;70%&quot;)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># # Add the choropleth (color-coded layer)</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># folium.Choropleth(</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This is the GeoJSON data that contains the shapes of the ZIP code areas.</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#     geo_data=results,</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This is the data that I want to visualize.</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     data=results,</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     # Here I specify what columns to use (the column that ties to the geographic shapes and the column with the data to visualize).</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#     # The first column is the ZIP code, and the second column is the average price.</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#     columns=[&#39;zip_code&#39;, &#39;average_price_prediction_log&#39;],</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#     # The key_on value should be a string that represents the path in the GeoJSON structure to the property (key) that holds the value you want to match with the data DataFrame.</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#     key_on=&#39;feature.properties.zip_code&#39;,</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This sets the color scale used to fill each area.</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#     fill_color=&#39;plasma&#39;,</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This sets the transparency of the filled areas.</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#     fill_opacity=0.7,</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This sets the transparency of the boundary lines between the geographic shapes.</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#     line_opacity=0.45,</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#     legend_name= &#39;Average Price Prediction (Log Scale - Smallest to Largest)&#39;,</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#     # Here I set the color of the legend text to white</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This is important for the dark background map style.</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># ).add_to(m1)</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># tooltip = GeoJson(</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">#     results,</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">#     style_function=lambda x: {</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Don&#39;t add a fill color (we&#39;re already coloring with the choropleth)</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co">#         &#39;fillColor&#39;: &#39;transparent&#39;,</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Hide the border line color</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co">#         &#39;color&#39;: &#39;transparent&#39;,</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co">#         # No border line thickness</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="co">#         &#39;weight&#39;: 0</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co">#     },</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="co">#     tooltip=GeoJsonTooltip(</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Columns to display in the tooltip</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="co">#         fields=[&#39;zip_code&#39;, &#39;average_price_prediction&#39;],</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co">#         # What to display as labels for the fields (instead of the column names)</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co">#         aliases=[&#39;ZIP Code:&#39;, &#39;Average Price Prediction:&#39;],</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Formats numbers using local formatting (e.g. commas in large numbers)</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co">#         localize=True,</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Tooltip &quot;sticks&quot; to your mouse as you move around that shape. Nice UX</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="co">#         sticky=True,</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Shows the field names (the aliases you defined).</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co">#         labels=True</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="co">#     )</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="co"># ).add_to(m1)</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="co"># m1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="f3377469" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># m2 = folium.Map(location=[31.9686, -99.9018], zoom_start=6.35, tiles=&#39;OpenStreetMap&#39;, width=&quot;42%&quot;, height=&quot;70%&quot;)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # Add the choropleth (color-coded layer)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># folium.Choropleth(</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This is the GeoJSON data that contains the shapes of the ZIP code areas.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     geo_data=results,</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This is the data that I want to visualize.</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     data=results,</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#     # Here I specify what columns to use (the column that ties to the geographic shapes and the column with the data to visualize).</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#     # The first column is the ZIP code, and the second column is the average price.</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#     columns=[&#39;zip_code&#39;, &#39;actual_average_price_log&#39;],</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     # The key_on value should be a string that represents the path in the GeoJSON structure to the property (key) that holds the value you want to match with the data DataFrame.</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     key_on=&#39;feature.properties.zip_code&#39;,</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This sets the color scale used to fill each area.</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#     fill_color=&#39;plasma&#39;,</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This sets the transparency of the filled areas.</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#     fill_opacity=0.7,</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This sets the transparency of the boundary lines between the geographic shapes.</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#     line_opacity=0.45,</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#     legend_name= &#39;Actual Average Price (Log Scale - Smallest to Largest)&#39;,</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#     # Here I set the color of the legend text to white</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#     # This is important for the dark background map style.</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ).add_to(m2)</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># tooltip = GeoJson(</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#     results,</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#     style_function=lambda x: {</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Don&#39;t add a fill color (we&#39;re already coloring with the choropleth)</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">#         &#39;fillColor&#39;: &#39;transparent&#39;,</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Hide the border line color</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co">#         &#39;color&#39;: &#39;transparent&#39;,</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co">#         # No border line thickness</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co">#         &#39;weight&#39;: 0</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co">#     },</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co">#     tooltip=GeoJsonTooltip(</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Columns to display in the tooltip</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="co">#         fields=[&#39;zip_code&#39;, &#39;actual_average_price&#39;],</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co">#         # What to display as labels for the fields (instead of the column names)</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="co">#         aliases=[&#39;ZIP Code:&#39;, &#39;Actual Average Price:&#39;],</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Formats numbers using local formatting (e.g. commas in large numbers)</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="co">#         localize=True,</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Tooltip &quot;sticks&quot; to your mouse as you move around that shape. Nice UX</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co">#         sticky=True,</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="co">#         # Shows the field names (the aliases you defined).</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co">#         labels=True</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="co">#     )</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="co"># ).add_to(m2)</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="co"># m2 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
 </section>
