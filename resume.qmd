@@ -1,89 +1,127 @@
 ---
 layout: cv
-title: Isaac Newtons's CV
+title: "Luis Rivera"
+format: html
+css: styles.css
 ---
-# Isaac Newton
-Physicist, Mathematician, Cambridge professor.
+  
+303-960-6369 | LuisRaulRivera24@gmail.com | [linkedin.com/in/luisrivera98](https://linkedin.com/in/luisrivera98)  
 
-<div id="webaddress">
-<a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
-| <a href="http://en.wikipedia.org/wiki/Isaac_Newton">My wikipedia page</a>
-</div>
+::: {.header-box}
+## Areas of Expertise
+:::
 
+<ul class="expertise-list">
+  <li>Algorithm tools</li>
+  <li>Design metrics</li>
+  <li>Object-oriented programming</li>
+  <li>Data spreadsheet summary</li>
+  <li>Probability distributions</li>
+  <li>Hypothesis testing</li>
+  <li>R programming</li>
+  <li>Statistical testing</li>
+  <li>Data analysis/evaluation</li>
+  <li>Research techniques</li>
+  <li>Research design</li>
+  <li>Process planning</li>
+  <li>Quality management</li>
+  <li>Forecasting tools</li>
+  <li>Policy analysis</li>
+  <li>SQL commands with joins</li>
+  <li>Database design</li>
+  <li>Data merging</li>
+  <li>HTML proficiency</li>
+  <li>CSS styling proficiency</li>
+</ul>
 
-## Currently
-
-Standing on the shoulders of giants
-
-### Specialized in
-
-Laws of motion, gravitation, minting coins, disliking [Robert Hooke](http://en.wikipedia.org/wiki/Robert_Hooke)
-
-
-### Research interests
-
-Cooling, power series, optics, alchemy, planetary motions, apples.
-
-
+::: {.header-box}
 ## Education
-
-`1654-1660`
-__The King's School, Grantham.__
-
-`June 1661 - now`
-__Trinity College, Cambridge__
-
-- Sizar
-
-`1667 - death`
-__Trinity College, Cambridge__
-
-- Fellow
+:::
 
 
+::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
+### Bachelor of Arts in Public Policy and Administration
+:::
+**Brigham Young University - Idaho** | Rexburg, ID  
+**Sep 2018 - Dec 2021** 
 
-## Awards
+<ul class="education-list">
+  <li>Emphasis in Public Administration</li>
+  <li>GPA: 3.9</li>
+  <li>Academic Scholarship - Thomas E. Ricks Grant</li>
+</ul>
 
-`2012`
-President, *Royal Society*, London, UK
+---
 
-Associate, *French Academy of Science*, Paris, France
+::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
+### Bachelor of Science in Data Science Online Coursework
+:::
+**Brigham Young University - Idaho** | Rexburg, ID  
+**Aug 2024 - Present**  
 
+<ul class="education-list">
+  <li>Additional courses taken through the BYU-I BS in Data Science major as prerequisite coursework for
+  <br>MS in Data Science.</li>
+</ul>
 
+::: {.header-box}
+## Professional Experience
+:::
 
-## Publications
+::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
+### Administrative Analyst I
+:::  
+**New Jersey Department of Transportation** | Ewing, NJ  
+**Jan 2023 - May 2024**
 
-<!-- A list is also available [online](http://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
+<ul class="education-professional-list">
+  <li>Developed internal protocols for managing $3.5 million in annual federal funds related to the<br>
+    Intelligent Transportation Resource Center.</li>
+  <li>Managed federal contracts using the Financial Management Information System.</li>
+  <li>Conducted research on Intelligent Transportation Systems to improve traffic flow and safety.</li>
+  <li>Provided support in developing annual in-house budget for the Transportation Mobility Research Unit.</li>
+  <li>Participated in State Transportation Innovation Council quarterly meetings.</li>
+</ul>
 
-### Journals
+---
 
-`1669`
-Newton Sir I, De analysi per æquationes numero terminorum infinitas. 
+::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
+### Instructor Evaluation Support Specialist/Statistics Tutoring Assistant
+:::    
+**Brigham Young University-Idaho** | Rexburg, ID  
+**Apr 2021 - Dec 2021**  
 
-`1669`
-Lectiones opticæ.
+<ul class="education-professional-list">
+  <li>Assigned grades for student coursework.</li>
+  <li>Conducted exam review sessions and tutoring for a class of 50 students.</li>
+  <li>Monitored BYU-I online instructor presence for 24 instructors daily.</li>
+</ul>
 
-etc. etc. etc.
+---
 
-### Patents
+::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
+### Custodian
+::: 
+**Brigham Young University-Idaho** | Rexburg, ID  
+**Jan 2019 - Apr 2020**  
 
-`2012`
-Infinitesimal calculus for solutions to physics problems, [SMBC](http://www.techdirt.com/articles/20121011/09312820678/if-patents-had-been-around-time-newton.shtml) patent 001
+<ul class="education-professional-list">
+  <li>Performed routine cleaning and maintenance tasks across campus buildings.</li>
+  <li>Managed waste disposal and maintained cleanliness in waste areas.</li>
+  <li>Assisted with event setups and post-event cleanups.</li>
+</ul>
 
+---
 
-## Occupation
+::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
+### Ambassador
+:::   
+**Church of Jesus Christ of Latter-day Saints** | San Fernando, CA  
+**Aug 2016 - Jul 2018**  
 
-`1600`
-__Royal Mint__, London
-
-- Warden
-- Minted coins
-
-`1600`
-__Lucasian professor of Mathematics__, Cambridge University
-
-
-
-<!-- ### Footer
-
-Last updated: May 2013 -->
+<ul class="education-professional-list">
+  <li>Oversaw the well-being of 30 full-time ambassadors.</li>
+  <li>Provided community service and humanitarian aid.</li>
+  <li>Shared the teachings of Jesus Christ and engaged in religious education.</li>
+  <li>Trained ambassadors for missionary life and responsibilities.</li>
+</ul>

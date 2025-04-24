@@ -2,18 +2,18 @@ project:
   type: website
 
 website:
-  title: "Your_Name - Data Science Portfolio"
+  title: "Luis Rivera - Data Science Portfolio"
   favicon: Images/favicon.png
   back-to-top-navigation: true
-  repo-url: https://github.com/username/username.github.io
+  repo-url: https://github.com/luisraulrivera24/luisraulrivera24.github.io
   #repo-actions: [issue] #if you want to allow others to report issues on your site uncomment this line
 
   page-footer: 
     border: true
-    left: "Your_Name 2024©"
+    left: "Luis Rivera 2025©"
     right: 
       - icon: linkedin
-        href: Your_LinkedIn_URL
+        href: https://www.linkedin.com/in/luis-rivera98?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2BcTRQkKURMWbGDkfeAoZJw%3D%3D
 
   navbar:
     background: primary
@@ -182,6 +182,7 @@ format:
       #dark: [cosmo, theme-dark.scss]
     css: styles.css
     toc: true
+    toc-depth: 2
 
 
 
