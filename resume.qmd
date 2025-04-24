@@ -3,6 +3,7 @@ layout: cv
 title: "Luis Rivera"
 format: html
 css: styles.css
+toc: false
 ---
   
 303-960-6369 | LuisRaulRivera24@gmail.com | [linkedin.com/in/luisrivera98](https://linkedin.com/in/luisrivera98)  

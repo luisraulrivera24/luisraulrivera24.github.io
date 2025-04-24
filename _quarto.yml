@@ -180,9 +180,10 @@ format:
       dark: darkly
       #light: cosmo
       #dark: [cosmo, theme-dark.scss]
-    css: styles.css
+    css: none
     toc: true
     toc-depth: 2
+    
 
 
 

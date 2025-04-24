@@ -1,1 +1,46 @@
-/* css styles */
+/* ############################################ RESUME CSS ############################################ */
+.header-box {
+    background-color: #808080;
+    padding: 0;
+    text-align: left;
+    font-weight: bold;
+    line-height: 200;
+    margin-bottom: 2.5%;
+    color: white; /* Set font color to white */
+    /* Adding a shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Horizontal offset, vertical offset, blur radius, shadow color */
+  }
+/* This is for the unordered list (ul) */
+.expertise-list {
+  display: flex;              /* Flexbox layout */
+  flex-wrap: wrap;            /* Items will wrap to the next line if needed */
+  justify-content: space-between;  /* Distribute items evenly */
+  list-style-type: disc;      /* Keeps the bullets */
+  padding-left: 0;            /* Remove default padding on the left */
+  margin-top: 0;              /* Remove default margin at the top */
+}
+
+/* This is for each list item (li) */
+.expertise-list li {
+  width: 28%;                 /* Each list item takes up 28% of the width */
+  margin-left: 1em;           /* Space between columns */
+  white-space: nowrap;        /* Prevent line breaks inside long items */
+}
+/* This is for the unordered list (ul) */
+.education-professional-list {
+    display: flex;              /* Flexbox layout */
+    flex-wrap: wrap;            /* Items will wrap to the next line if needed */
+    justify-content: space-between;  /* Distribute items evenly */
+    list-style-type: disc;      /* Keeps the bullets */
+    padding-left: 0;            /* Remove default padding on the left */
+    margin-top: 0;              /* Remove default margin at the top */
+  }
+  
+  /* This is for each list item (li) */
+  .education-professional-list li {
+    width: 50%;                 /* Each list item takes up 28% of the width */
+    margin-left: 1em;           /* Space between columns */
+    white-space: nowrap;        /* Prevent line breaks inside long items */
+  }
+
+/* ############################################            ############################################ */
