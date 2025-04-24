@@ -199,58 +199,58 @@ results = gpd.GeoDataFrame(results, geometry='geometry')
 ```
 
 ```{python}
-# The actual heat map
-# geojson_data = tacos.__geo_interface__  # convert GeoDataFrame to GeoJSON
-# Create a map centered over Texas
-m1 = folium.Map(location=[31.9686, -99.9018], zoom_start=6.35, tiles='OpenStreetMap', width="42%", height="70%")
+# # The actual heat map
+# # geojson_data = tacos.__geo_interface__  # convert GeoDataFrame to GeoJSON
+# # Create a map centered over Texas
+# m1 = folium.Map(location=[31.9686, -99.9018], zoom_start=6.35, tiles='OpenStreetMap', width="42%", height="70%")
 
-# Add the choropleth (color-coded layer)
-folium.Choropleth(
-    # This is the GeoJSON data that contains the shapes of the ZIP code areas.
-    geo_data=results,
-    # This is the data that I want to visualize.
-    data=results,
-    # Here I specify what columns to use (the column that ties to the geographic shapes and the column with the data to visualize).
-    # The first column is the ZIP code, and the second column is the average price.
-    columns=['zip_code', 'average_price_prediction_log'],
-    # The key_on value should be a string that represents the path in the GeoJSON structure to the property (key) that holds the value you want to match with the data DataFrame.
-    key_on='feature.properties.zip_code',
-    # This sets the color scale used to fill each area.
-    fill_color='plasma',
-    # This sets the transparency of the filled areas.
-    fill_opacity=0.7,
-    # This sets the transparency of the boundary lines between the geographic shapes.
-    line_opacity=0.45,
-    legend_name= 'Average Price Prediction (Log Scale - Smallest to Largest)',
-    # Here I set the color of the legend text to white
-    # This is important for the dark background map style.
-).add_to(m1)
+# # Add the choropleth (color-coded layer)
+# folium.Choropleth(
+#     # This is the GeoJSON data that contains the shapes of the ZIP code areas.
+#     geo_data=results,
+#     # This is the data that I want to visualize.
+#     data=results,
+#     # Here I specify what columns to use (the column that ties to the geographic shapes and the column with the data to visualize).
+#     # The first column is the ZIP code, and the second column is the average price.
+#     columns=['zip_code', 'average_price_prediction_log'],
+#     # The key_on value should be a string that represents the path in the GeoJSON structure to the property (key) that holds the value you want to match with the data DataFrame.
+#     key_on='feature.properties.zip_code',
+#     # This sets the color scale used to fill each area.
+#     fill_color='plasma',
+#     # This sets the transparency of the filled areas.
+#     fill_opacity=0.7,
+#     # This sets the transparency of the boundary lines between the geographic shapes.
+#     line_opacity=0.45,
+#     legend_name= 'Average Price Prediction (Log Scale - Smallest to Largest)',
+#     # Here I set the color of the legend text to white
+#     # This is important for the dark background map style.
+# ).add_to(m1)
 
-tooltip = GeoJson(
-    results,
-    style_function=lambda x: {
-        # Don't add a fill color (we're already coloring with the choropleth)
-        'fillColor': 'transparent',
-        # Hide the border line color
-        'color': 'transparent',
-        # No border line thickness
-        'weight': 0
-    },
-    tooltip=GeoJsonTooltip(
-        # Columns to display in the tooltip
-        fields=['zip_code', 'average_price_prediction'],
-        # What to display as labels for the fields (instead of the column names)
-        aliases=['ZIP Code:', 'Average Price Prediction:'],
-        # Formats numbers using local formatting (e.g. commas in large numbers)
-        localize=True,
-        # Tooltip "sticks" to your mouse as you move around that shape. Nice UX
-        sticky=True,
-        # Shows the field names (the aliases you defined).
-        labels=True
-    )
-).add_to(m1)
+# tooltip = GeoJson(
+#     results,
+#     style_function=lambda x: {
+#         # Don't add a fill color (we're already coloring with the choropleth)
+#         'fillColor': 'transparent',
+#         # Hide the border line color
+#         'color': 'transparent',
+#         # No border line thickness
+#         'weight': 0
+#     },
+#     tooltip=GeoJsonTooltip(
+#         # Columns to display in the tooltip
+#         fields=['zip_code', 'average_price_prediction'],
+#         # What to display as labels for the fields (instead of the column names)
+#         aliases=['ZIP Code:', 'Average Price Prediction:'],
+#         # Formats numbers using local formatting (e.g. commas in large numbers)
+#         localize=True,
+#         # Tooltip "sticks" to your mouse as you move around that shape. Nice UX
+#         sticky=True,
+#         # Shows the field names (the aliases you defined).
+#         labels=True
+#     )
+# ).add_to(m1)
 
-m1
+# m1
  
 ```
 ```{python}
