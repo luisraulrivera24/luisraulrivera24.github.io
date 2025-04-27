@@ -1,6 +1,8 @@
 ---
-title: "Can You Predict That? Predicting Home Prices with Machine Learning"
+title: "Can You Predict That?"
+subtitle: "Using XGBoost Regression to Predict Home Prices in Texas"
 author: "Luis Rivera"
+bibliography: references/references_mlp1.bib
 format:
   html:
     self-contained: true
@@ -44,7 +46,25 @@ from folium.features import GeoJson, GeoJsonTooltip
 
 __What is the average home price by Zipcode in Texas?__
 
-__
+_We know house prices continue to skyrocket across the nation, making it more difficult for the rising generation of Americans to afford a home. In Texas, the "median home prices rose by about 40 percent between 2019 and 2023..."[@Comptroller]. We know these overall statistics, but what areas have the highest home prices? And how do we measure the boundaries of an "area"? This information would be really beneficial for those looking to buy a home in the near future somewhere in Texas, whether it be humid Houston, or dry Amarillo. It would be very useful for Texas residents to see the average home price for a particular bounded "area". Better yet, are we able to predict the price of a home in Texas with household data such as land space, square footage, number of bedrooms, etc.? How accurate of a model can we create? In this study, my aim was to develop a model that can confidently predict the price of a home in Texas based on household data. The company Barking Data has provided a dataset on homes for sale across the United States [@BarkingData] that appears to be on homes being sold in the year 2022. It is difficult to come across the kind of information Barking Data so thoughtfully provided. Here is a sample of the household data attributes provided in the dataset:_
+
+- _address_
+- _street_name_
+- _apartment_
+- _city_
+- _latitude_
+- _longitude_
+- _postcode_
+- _price_
+- _bedroom_number_
+- _bathroom_number_
+- _price_per_unit_
+- _living_space_
+- _land_space_
+- _property_type_
+- _property_status_
+
+_I cleaned up the dataset by first filtering the data to only look at data for the state of Texas (target state). Furthermore, I was interested in properties that were "For Sale". I noticed that there were some homes that had a living space of only "0, 1, 2 or 3 square feet, so I removed this from my dataset. I also filtered my dataset by properties that were: apartments, condos, manufactured homes, multi-family homes, single-family homes, and townhouses. I removed any lots, being sold because I was interested in only homes. Land space cannot be negative, and I noticed some negative landspace so I filtered out the rows with negative landscape values. After using other filtering methods, and one-hot encoding, I ended up with the following dataset (sample shown):_
 
 ```{python}
 
@@ -77,7 +97,12 @@ df = pd.get_dummies(df, columns=['property_type'], dtype='int')
 
 # Here I change the name of my postcode column to zip_code
 df.rename(columns={'postcode': 'zip_code'}, inplace=True)
+
+df.head(10)
 ```
+
+## Machine Learning Preparation
+_In order to finish preparing my dataframe for a machine learning model, I used a dataset provided in github that provides the geometric shapes by zipcode[@geometry]. This dataframe was used to extract the centroid latitude and centroid longitude for the machine learning model I ended up using- XGBoost Regression. I ended up using this dataframe later on to extract the geometry column which contains the geometric shapes that I needed to create a folium choropleth map that shows the accuracy of my model in predicting prices of homes._     
 
 ```{python}
 
@@ -118,6 +143,31 @@ ml_clean['zip_centroid_lat'] = ml_clean.geometry.centroid.y
 # Here I drop the geometry column (not needed for modeling) and city column (one-hot encoding and label encoding are not ideal for this column)
 ml_clean = ml_clean.drop(columns=['geometry'])
 
+zip_shapes.head(10)
+```
+
+_It is important to note that the geometry column gets dropped since this is not needed in the machine learning model. However, as mentioned earlier, before dropping it we derived the centroid longitude and centroid latitude from the geometry column to use in the machine learning model. This column is used again after training my machine learning model in order to demonstrate the results in accuracy of my machine learning model compared to the test data.Below you will find the clean final dataframe (sample) that was used by my machine learning model. It is important to note that the target variable used for the machine learning model was the log of 1 plus the price of the home:_
+$$
+\text{target column} = \log_{10}\left(1+x\right)
+$$
+$$
+{\displaystyle ds^{2}=\left(1-{\frac {r_{\mathrm {s} }}{r}}\right)^{-1}\,dr^{2}+r^{2}\,d\varphi ^{2}}
+$$
+_The reason why I decided to use this as my target column is because the outliers in the price column were causing my folium choropleth legend scale to be heavily skewed, making it unreadable. Therefore, by changing the scale of the target column house price, the legend for each folium choropleth map shows up balanced, making it easy to read._
+
+
+```{python}
+ml_clean.head(10)
+```
+
+## Results
+_The reason why I ended up going with the XGBoost Regression model is because this model can work with features that contain missing data, and we used the regression model of XGBoost because our target variable is continuous rather than categorical. I decided to use a test size of 0.20 and a random state of 42 when splitting my data for training and when I created the instance of my model in order to help with reproducibility of the test. Let's go over the evaluation metrics I used for my model. The Mean Squared Error (MSE) measures the average of the squared differences between the predicted and actual values. This model is sensitive to outliers. We can see from my results below that the MSE was 0.12, which is low. The Root Mean Squared Error (RMSE) is the square root of the Mean Squared Error (MSE), which means it brings the units back to those of the target variable (the log scale of the home prices column in this case). This metric provides the average error size. We can see that the Root Mean Squared Error (RMSE) is 0.35. Again, the root mean squared error is low. The Mean Absolute Error (MAE) measures the average error without considering the direction (negative, positive). Our Mean Absolute Error is 0.22, which is low. Finally we look at the R^2^ score. This measures the proportion of the variance in the dependent variable (target variable) that is predictable from the independent variables. R^2^ values fall within the range 0 to 1 (0% to 100%). The closer the number is to 1 the closer it is to a perfect fit. In other words, the model better explains the variability in the dependent variable (target variable). We got a result of 0.85 which is overall great._
+
+```python
+# Here I make the target variable a log to improve my machine learning model performance
+y = np.log1p(y)
+
+X_train_full, X_test_full, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 ```
 
 ```{python}
@@ -150,11 +200,11 @@ xgb.fit(X_train, y_train)
 # make predictions
 y_pred = xgb.predict(X_test)
 
-print("Mean Absolute Error (MAE):", mean_absolute_error(y_test, y_pred))
-print("Mean Squared Error (MSE):", mean_squared_error(y_test, y_pred))
-rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-print("Root Mean Squared Error (RMSE):", rmse)
-print("R² Score:", r2_score(y_test, y_pred))
+print("Mean Squared Error (MSE):", round(mean_squared_error(y_test, y_pred),2))
+rmse = round(np.sqrt(mean_squared_error(y_test, y_pred)),2)
+print("Root Mean Squared Error (RMSE):", round(rmse,2))
+print("Mean Absolute Error (MAE):", round(mean_absolute_error(y_test, y_pred),2))
+print("R² Score:", round(r2_score(y_test, y_pred),2))
 
 # # undo the log1p transformation to get the actual price predictions
 # y_pred = np.expm1(y_pred)
@@ -202,6 +252,9 @@ results['geometry'] = results['geometry'].simplify(tolerance=0.01, preserve_topo
 
 # results
 ```
+
+## Folium Choropleth - Map Visualization (Predicted vs Actual)
+_Now lets talk about the results in the folium choropleth map._
 
 ```{python}
 # The actual heat map
@@ -306,12 +359,9 @@ tooltip = GeoJson(
 ).add_to(m2)
 
 # Save the maps as separate HTML files
-m1.save("ml_datasets/predicted_price_map.html")
-m2.save("ml_datasets/actual_price_map.html")
+# m1.save("ml_datasets/predicted_price_map.html")
+# m2.save("ml_datasets/actual_price_map.html")
 
-```
-
-```{python}
 # Display the combined maps (e.g., in a Jupyter Notebook or save to HTML file)
 from IPython.display import HTML
 
@@ -330,8 +380,5 @@ html_string = """
 """.format(m1=m1._repr_html_(), m2=m2._repr_html_())
 
 HTML(html_string)
-```
-
-```{python}
 
 ```
