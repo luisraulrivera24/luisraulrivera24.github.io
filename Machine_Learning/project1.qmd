@@ -9,10 +9,10 @@ format:
     page-layout: full
     title-block-banner: true
     toc: true
-    toc-depth: 3
+    toc-depth: 2
     toc-location: body
     number-sections: false
-    html-math-method: katex
+    html-math-method: mathjax
     code-fold: true
     code-summary: "Show the code"
     code-overflow: wrap
@@ -146,28 +146,77 @@ ml_clean = ml_clean.drop(columns=['geometry'])
 zip_shapes.head(10)
 ```
 
-_It is important to note that the geometry column gets dropped since this is not needed in the machine learning model. However, as mentioned earlier, before dropping it we derived the centroid longitude and centroid latitude from the geometry column to use in the machine learning model. This column is used again after training my machine learning model in order to demonstrate the results in accuracy of my machine learning model compared to the test data.Below you will find the clean final dataframe (sample) that was used by my machine learning model. It is important to note that the target variable used for the machine learning model was the log of 1 plus the price of the home:_
-$$
-\text{target column} = \log_{10}\left(1+x\right)
-$$
-$$
-{\displaystyle ds^{2}=\left(1-{\frac {r_{\mathrm {s} }}{r}}\right)^{-1}\,dr^{2}+r^{2}\,d\varphi ^{2}}
-$$
+## Results
+
+_It is important to note that the geometry column gets dropped since this is not needed in the machine learning model. However, as mentioned earlier, before dropping it we derived the centroid longitude and centroid latitude from the geometry column to use in the machine learning model. This column is used again after training my machine learning model in order to demonstrate the accuracy of the results of my machine learning model compared to the test data in a folium choropleth map. Below you will find the clean final dataframe (sample) that was used by my machine learning model . It is important to note that the target variable used for the machine learning model was the log of 1 plus the "price" column (the home "price" column is represented as an "x" in the equation):_
+
+$\text{target column} = \log\left(1+x\right)$
+
 _The reason why I decided to use this as my target column is because the outliers in the price column were causing my folium choropleth legend scale to be heavily skewed, making it unreadable. Therefore, by changing the scale of the target column house price, the legend for each folium choropleth map shows up balanced, making it easy to read._
 
+_The reason why I ended up going with the XGBoost Regression model is because this model can work with features that contain missing data, and we used the regression model of XGBoost because our target variable is continuous rather than categorical. I decided to use a test size of 0.20 and a random state of 42 when splitting my data for training and when I created the instance of my model in order to help with reproducibility of the test._
 
-```{python}
-ml_clean.head(10)
-```
+_Let's go over the evaluation metrics I used for my model. The Mean Squared Error (MSE) measures the average of the squared differences between the predicted and actual values (see equation below):_
 
-## Results
-_The reason why I ended up going with the XGBoost Regression model is because this model can work with features that contain missing data, and we used the regression model of XGBoost because our target variable is continuous rather than categorical. I decided to use a test size of 0.20 and a random state of 42 when splitting my data for training and when I created the instance of my model in order to help with reproducibility of the test. Let's go over the evaluation metrics I used for my model. The Mean Squared Error (MSE) measures the average of the squared differences between the predicted and actual values. This model is sensitive to outliers. We can see from my results below that the MSE was 0.12, which is low. The Root Mean Squared Error (RMSE) is the square root of the Mean Squared Error (MSE), which means it brings the units back to those of the target variable (the log scale of the home prices column in this case). This metric provides the average error size. We can see that the Root Mean Squared Error (RMSE) is 0.35. Again, the root mean squared error is low. The Mean Absolute Error (MAE) measures the average error without considering the direction (negative, positive). Our Mean Absolute Error is 0.22, which is low. Finally we look at the R^2^ score. This measures the proportion of the variance in the dependent variable (target variable) that is predictable from the independent variables. R^2^ values fall within the range 0 to 1 (0% to 100%). The closer the number is to 1 the closer it is to a perfect fit. In other words, the model better explains the variability in the dependent variable (target variable). We got a result of 0.85 which is overall great._
+$$
+\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+$$
+
+_This model is sensitive to outliers. We can see from my results below that the MSE was 0.12, which is low._
+
+_The Root Mean Squared Error (RMSE) is the square root of the Mean Squared Error (MSE), which means it brings the units back to those of the target variable (the log scale of the home prices column in this case). This metric provides the average error size. Please see the equation below:_
+
+$$
+\text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
+$$
+
+_We can see that the Root Mean Squared Error (RMSE) is 0.35. Again, the root mean squared error is low._
+
+_The Mean Absolute Error (MAE) measures the average error without considering the direction (negative, positive). Please see equation below:_
+$$
+\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} \left| y_i - \hat{y}_i \right|
+$$
+
+_Our Mean Absolute Error is 0.22, which is low._
+
+Finally we look at the R^2^ score. This measures the proportion of the variance in the dependent variable (target variable) that is predictable from the independent variables. R^2^ values fall within the range 0 to 1 (0% to 100%). The closer the number is to 1 the closer it is to a perfect fit. In other words, the model better explains the variability in the dependent variable (target variable). Please see the equation below:_
+
+$$
+R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+$$
+
+_We got a result of 0.85 which is overall great._
+
+_Below you will see the dataframe that was fed to the XGBoost model to train and test the model (X- represents the features. y- represents the target variable). You will notice the change in the scale of the target variable to a log scale. Below that you will see the results of the metrics used to evaluate the model as we have discussed._
 
 ```python
+# Drop zipcode for model training
+X = ml_clean.drop(columns=['price'])
+y = ml_clean['price']
+
 # Here I make the target variable a log to improve my machine learning model performance
 y = np.log1p(y)
 
 X_train_full, X_test_full, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Here I save the zipcodes separately before I drop them for modeling
+
+# Zipcodes aligned to my training set
+zip_train = X_train_full['zip_code'].reset_index(drop=True)
+
+# Zipcodes aligned to my test set
+zip_test = X_test_full['zip_code'].reset_index(drop=True)
+
+# Here I remove the zipcodes from the actual training data
+X_train = X_train_full.drop(columns=['zip_code'])
+X_test = X_test_full.drop(columns=['zip_code'])
+
+# create model instance
+xgb = XGBRegressor(n_estimators=350, max_depth=10, learning_rate=.01, random_state=42)
+# fit model
+xgb.fit(X_train, y_train)
+# make predictions
+y_pred = xgb.predict(X_test)
 ```
 
 ```{python}
@@ -199,6 +248,15 @@ xgb = XGBRegressor(n_estimators=350, max_depth=10, learning_rate=.01, random_sta
 xgb.fit(X_train, y_train)
 # make predictions
 y_pred = xgb.predict(X_test)
+
+print("X-Features:")
+X.head(10)
+```
+```{python}
+print("y-Target Variable:")
+y.head(10)
+```
+```{python}
 
 print("Mean Squared Error (MSE):", round(mean_squared_error(y_test, y_pred),2))
 rmse = round(np.sqrt(mean_squared_error(y_test, y_pred)),2)
@@ -254,7 +312,7 @@ results['geometry'] = results['geometry'].simplify(tolerance=0.01, preserve_topo
 ```
 
 ## Folium Choropleth - Map Visualization (Predicted vs Actual)
-_Now lets talk about the results in the folium choropleth map._
+_Now lets talk about the results in the folium choropleth map. You will notice that the dataset did not provide all the zipcodes in the state of Texas. This is evident by the missing boundaries. However, there was plenty of data available. After obtaining the results of the test data from the XGBoost model, I needed to aggregate the data by grouping by zipcodes and obtaining the average home price (in log scale) for each zipcode. On the map to the left, you will find the average price prediction by the XGBoost model for each zipcode and on the map to the left you will find the actual average price for each zipcode. As you can see, the model does a great job in predicting average home prices, the results are nearly identical to the actual average prices as shown in the map on the right. Now it is difficult to know what the actual home price is of a home if it is measured in a log scale, which is why the predicted and actual average prices are given normally (converted back to dollars) for each zipcode in each map if you hover over any zipcode in each map. That way, you know the actual average price of a home in dollars for each zipcode._
 
 ```{python}
 # The actual heat map
