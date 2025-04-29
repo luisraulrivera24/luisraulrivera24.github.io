@@ -60,8 +60,7 @@ toc: false
 **Aug 2024 - Present**  
 
 <ul class="education-list">
-  <li>Additional courses taken through the BYU-I BS in Data Science major as prerequisite coursework for
-  <br>MS in Data Science.</li>
+  <li>Additional courses taken through the BYU-I BS in Data Science major.</li>
 </ul>
 
 ::: {.header-box}
