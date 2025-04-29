@@ -56,7 +56,7 @@ HTML("ml_datasets/dual_map.html")
 
 __What is the average home price by Zipcode in Texas?__
 
-_We know house prices continue to skyrocket across the nation, making it more difficult for the rising generation of Americans to afford a home. In Texas, the "median home prices rose by about 40 percent between 2019 and 2023..."[@Comptroller]. We know these overall statistics, but what areas have the highest home prices? And how do we measure the boundaries of an "area"? This information would be really beneficial for those looking to buy a home in the near future somewhere in Texas, whether it be humid Houston, or dry Amarillo. It would be very useful for Texas residents to see the average home price for a particular bounded "area". Better yet, are we able to predict the price of a home in Texas with household data such as land space, square footage, number of bedrooms, etc.? How accurate of a model can we create? In this study, my aim was to develop a model that can confidently predict the price of a home in Texas based on household data. The company Barking Data has provided a dataset on homes for sale across the United States [@BarkingData] that appears to be on homes being sold in the year 2022. It is difficult to come across the kind of information Barking Data so thoughtfully provided. Here is a sample of the household data attributes provided in the dataset:_
+_We know house prices continue to skyrocket across the nation, making it more difficult for the rising generation of Americans to afford a home. In Texas, the "median home prices rose by about 40 percent between 2019 and 2023..."[@Comptroller]. We know these overall statistics, but what areas have the highest home prices? And how do we measure the boundaries of an "area"? This information would be really beneficial for those looking to buy a home in the near future somewhere in Texas, whether it be in humid Houston, or dry Amarillo. It would be very useful for Texas residents to see the average home price for a particular bounded "area". Better yet, are we able to predict the price of a home in Texas with household data such as land space, square footage, number of bedrooms, etc.? How accurate of a model can we create? In this study, my aim was to develop a model that can confidently predict the price of a home in Texas based on household data. The company Barking Data has provided a dataset on homes for sale across the United States [@BarkingData] that appears to be on homes being sold in the year 2022. It is difficult to come across the kind of information Barking Data so thoughtfully provided. Here is a sample of the household data attributes provided in the dataset:_
 
 - _address_
 - _street_name_
@@ -74,7 +74,7 @@ _We know house prices continue to skyrocket across the nation, making it more di
 - _property_type_
 - _property_status_
 
-_I cleaned up the dataset by first filtering the data to only look at data for the state of Texas (target state). Furthermore, I was interested in properties that were "For Sale". I noticed that there were some homes that had a living space of only "0, 1, 2 or 3 square feet, so I removed this from my dataset. I also filtered my dataset by properties that were: apartments, condos, manufactured homes, multi-family homes, single-family homes, and townhouses. I removed any lots, being sold because I was interested in only homes. Land space cannot be negative, and I noticed some negative landspace so I filtered out the rows with negative landscape values. After using other filtering methods, and one-hot encoding, I ended up with the following dataset (sample shown):_
+_I cleaned up the dataset by first filtering the data to only look at data for the state of Texas (target state). Furthermore, I was interested in properties that were "For Sale". I noticed that there were some homes that had a living space of only "0, 1, 2 or 3 square feet, so I removed this from my dataset. I also filtered my dataset by properties that were: apartments, condos, manufactured homes, multi-family homes, single-family homes, and townhouses. I removed any lots being sold because I was interested in homes only. Land space cannot be negative, and I noticed some negative landspace so I filtered out the rows with negative landscape values. After using other filtering methods, and one-hot encoding, I ended up with the following dataset (sample shown):_
 
 ```{python}
 
@@ -112,7 +112,7 @@ df.head(10)
 ```
 
 ## Machine Learning Preparation
-_In order to finish preparing my dataframe for a machine learning model, I used a dataset provided in github that provides the geometric shapes by zipcode[@geometry]. This dataframe was used to extract the centroid latitude and centroid longitude for the machine learning model I ended up using- XGBoost Regression. I ended up using this dataframe later on to extract the geometry column which contains the geometric shapes that I needed to create a folium choropleth map that shows the accuracy of my model in predicting prices of homes._     
+_In order to finish preparing my dataframe for a machine learning model, I used a dataset provided in github that provides the geometric shapes by zipcode[@geometry]. This dataframe was used to extract the centroid latitude and centroid longitude for the machine learning model I ended up using- XGBoost Regression. I ended up using this dataframe later on to extract the geometry column which contains the geometric shapes that I needed to create a folium choropleth map that shows the accuracy of my model in predicting prices of homes. Dataframe sample below:_     
 
 ```{python}
 
@@ -158,9 +158,11 @@ zip_shapes.head(10)
 
 ## Results
 
-_It is important to note that the geometry column gets dropped since this is not needed in the machine learning model. However, as mentioned earlier, before dropping it we derived the centroid longitude and centroid latitude from the geometry column to use in the machine learning model. This column is used again after training my machine learning model in order to demonstrate the accuracy of the results of my machine learning model compared to the test data in a folium choropleth map. Below you will find the clean final dataframe (sample) that was used by my machine learning model . It is important to note that the target variable used for the machine learning model was the log of 1 plus the "price" column (the home "price" column is represented as an "x" in the equation):_
+_It is important to note that the geometry column gets dropped since this is not needed in the machine learning model. However, as mentioned earlier, before dropping it I derived the centroid longitude and centroid latitude from the geometry column to use in the machine learning model. This column is used again after training my machine learning model in order to demonstrate the accuracy of the results of my machine learning model compared to the test data in a folium choropleth map. Below you will find the clean final dataframe (sample) that was used by my machine learning model . It is important to note that the target variable used for the machine learning model was the log of 1 plus the "price" column (the home "price" column is represented as an "x" in the equation):_
 
-$\text{target column} = \log\left(1+x\right)$
+$$
+\text{target column} = \log\left(1+x\right)
+$$
 
 _The reason why I decided to use this as my target column is because the outliers in the price column were causing my folium choropleth legend scale to be heavily skewed, making it unreadable. Therefore, by changing the scale of the target column house price, the legend for each folium choropleth map shows up balanced, making it easy to read._
 
@@ -189,7 +191,7 @@ $$
 
 _Our Mean Absolute Error is 0.22, which is low._
 
-Finally we look at the R^2^ score. This measures the proportion of the variance in the dependent variable (target variable) that is predictable from the independent variables. R^2^ values fall within the range 0 to 1 (0% to 100%). The closer the number is to 1 the closer it is to a perfect fit. In other words, the model better explains the variability in the dependent variable (target variable). Please see the equation below:_
+_Finally we look at the R^2^ score. This measures the proportion of the variance in the dependent variable (target variable) that is predictable from the independent variables. R^2^ values fall within the range 0 to 1 (0% to 100%). The closer the number is to 1 the closer it is to a perfect fit. In other words, the model better explains the variability in the dependent variable (target variable). Please see the equation below:_
 
 $$
 R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
@@ -197,7 +199,7 @@ $$
 
 _We got a result of 0.85 which is overall great._
 
-_Below you will see the dataframe that was fed to the XGBoost model to train and test the model (X- represents the features. y- represents the target variable). You will notice the change in the scale of the target variable to a log scale. Below that you will see the results of the metrics used to evaluate the model as we have discussed._
+_Below you will see the dataframe that was fed to the XGBoost model to train and test the model (X- represents the features. y- represents the target variable). You will notice the change in the scale of the target variable to a log scale as previously mentioned. Below that you will see the results of the metrics used to evaluate the model as discussed._
 
 ```python
 # Drop zipcode for model training
@@ -259,11 +261,11 @@ xgb.fit(X_train, y_train)
 # make predictions
 y_pred = xgb.predict(X_test)
 
-print("X-Features:")
+print("X-Features Sample:")
 X.head(10)
 ```
 ```{python}
-print("y-Target Variable:")
+print("y-Target Variable Sample:")
 y.head(10)
 ```
 ```{python}
@@ -322,7 +324,7 @@ results['geometry'] = results['geometry'].simplify(tolerance=0.01, preserve_topo
 ```
 
 ## Folium Choropleth - Map Visualization (Predicted vs Actual)
-_Now lets talk about the results in the folium choropleth map. You will notice that the dataset did not provide all the zipcodes in the state of Texas. This is evident by the missing boundaries. However, there was plenty of data available. After obtaining the results of the test data from the XGBoost model, I needed to aggregate the data by grouping by zipcodes and obtaining the average home price (in log scale) for each zipcode. On the map to the left, you will find the average price prediction by the XGBoost model for each zipcode and on the map to the left you will find the actual average price for each zipcode. As you can see, the model does a great job in predicting average home prices, the results are nearly identical to the actual average prices as shown in the map on the right. Now it is difficult to know what the actual home price is of a home if it is measured in a log scale, which is why the predicted and actual average prices are given normally (converted back to dollars) for each zipcode in each map if you hover over any zipcode in each map. That way, you know the actual average price of a home in dollars for each zipcode._
+_Now lets talk about the results in the folium choropleth map. You will notice that the dataset did not provide all the zipcodes in the state of Texas. This is evident by the missing boundaries. However, there was plenty of data available. After obtaining the results of the test data from the XGBoost model, I needed to aggregate the data by grouping by zipcodes and obtaining the average home price (in log scale) for each zipcode. On the map to the left, you will find the average price prediction by the XGBoost model for each zipcode and on the map to the left you will find the actual average price for each zipcode. As you can see, the model does a great job in predicting average home prices, the results are nearly identical to the actual average prices as shown in the map on the right. It is difficult to know what the actual home price is of a home if it is measured in a log scale, which is why the predicted and actual average prices are given normally (converted back to dollars) for each zipcode boundary in each map by hovering over any boundary on either map. That way, you know the actual average price of a home in U.S dollars._
 
 ```{python}
 # The actual heat map
