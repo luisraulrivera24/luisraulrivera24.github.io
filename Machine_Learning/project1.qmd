@@ -1,6 +1,5 @@
 ---
-title: "Can You Predict That?"
-subtitle: "Using XGBoost Regression to Predict Home Prices in Texas"
+title: "Decoding the Texas Housing Market with XGBoost-Powered Predictive Analytics"
 author: "Luis Rivera"
 bibliography: references/references_mlp1.bib
 format:
@@ -427,11 +426,11 @@ from IPython.display import HTML
 html_string = """
     <div style="display: flex;">
         <div style="width: 50%; height: 100%;">
-            <h3>Average Price Prediction (Log Scale- Smallest to Largest)</h3>
+            <h3>Average Price Prediction (Log Scale)</h3>
             {m1}
         </div>
         <div style="width: 50%; height: 100%;">
-            <h3>Actual Average Price (Log Scale - Smallest to Largest)</h3>
+            <h3>Actual Average Price (Log Scale)</h3>
             {m2}
         </div>
     </div>
