@@ -454,7 +454,7 @@
     "href": "Machine_Learning/project1.html#overview",
     "title": "Decoding the Texas Housing Market with XGBoost-Powered Predictive Analytics",
     "section": "Overview",
-    "text": "Overview\nLeveraging an XGBoost regression model, we accurately predicted average home prices across the state of Texas. Utilizing U.S. Census zipcode boundary data, the results were visualized in a Folium choropleth map. This project provides a comprehensive, step-by-step guide to the modeling process, from data preprocessing to final evaluation.\n\n\nShow the code\n# Displaying my dual map\nHTML(\"ml_datasets/dual_map.html\")\n\n\n\n    \n        \n            Average Price Prediction (Log Scale)\n            Make this Notebook Trusted to load map: File -&gt; Trust Notebook\n        \n        \n            Actual Average Price (Log Scale)\n            Make this Notebook Trusted to load map: File -&gt; Trust Notebook",
+    "text": "Overview\nLeveraging an XGBoost regression model, I accurately predicted average home prices across the state of Texas. Utilizing U.S. Census zipcode boundary data, the results were visualized in a Folium choropleth map. This project provides a comprehensive, step-by-step guide to the modeling process, from data preprocessing to final evaluation.\n\n\nShow the code\n# Displaying my dual map\nHTML(\"ml_datasets/dual_map.html\")\n\n\n\n    \n        \n            Average Price Prediction (Log Scale)\n            Make this Notebook Trusted to load map: File -&gt; Trust Notebook\n        \n        \n            Actual Average Price (Log Scale)\n            Make this Notebook Trusted to load map: File -&gt; Trust Notebook",
     "crumbs": [
       "Machine Learning",
       "Project 1"
