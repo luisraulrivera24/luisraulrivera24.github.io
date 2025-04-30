@@ -43,9 +43,9 @@ from folium.features import GeoJson, GeoJsonTooltip
 
 ```
 
-## Overview
+## Abstract
 
-_Leveraging an XGBoost regression model, I accurately predicted average home prices across the state of Texas. Utilizing U.S. Census zipcode boundary data, the results were visualized in a Folium choropleth map. This project provides a comprehensive, step-by-step guide to the modeling process, from data preprocessing to final evaluation._
+_Leveraging an XGBoost regression model, I accurately predicted average home prices across the state of Texas with an R^2 score of 0.84 and a Root Mean Squared Error (RMSE), Mean Squared Error (MSE), and Mean Absolute Error (MAE) at or below 0.35. Utilizing U.S. Census zipcode boundary data, the results were visualized in a Folium choropleth map showing most affordable housing can be found in the high/northwest plains, upper/south east, and south texas regions. This project provides a comprehensive, step-by-step guide to the modeling process, from data preprocessing to final evaluation._
 
 ```{python}
 # Displaying my dual map
