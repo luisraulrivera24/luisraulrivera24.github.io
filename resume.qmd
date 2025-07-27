@@ -47,7 +47,6 @@ toc: false
 <ul class="education-list">
   <li>Data Science emphasis</li>
   <li>Coursework includes: Database Foundations, Advanced Statistics, Data Warehousing, Predictive Analytics, Business Analytics With R, Applied Machine Learning, Big Data, Applied Natural Language Processing, Applied Deep Learning, and AWS Cloud Solution Architecture.</li>
-  <li>Academic Scholarship - Thomas E. Ricks Grant</li>
 </ul>
 
 ---
@@ -59,9 +58,9 @@ toc: false
 **Aug 2024 - Dec 2025**  
 
 <ul class="education-list">
+  <li>GPA: 4.0</li>
   <li>Additional programming and data science courses taken through the BYU-I BS in Data Science major.</li>
   <li>Coursework included: Programming Building Blocks, Programming with Functions, Technical Teamwork, Algorithm Design, Web Fundamentals, Programming with Classes, Intro to Databases, SQL, and Data Science Programming.</li>
-  <li>GPA: 4.0</li>
 </ul>
 
 ---
@@ -73,8 +72,8 @@ toc: false
 **Sep 2018 - Dec 2021** 
 
 <ul class="education-list">
-  <li>Emphasis in Public Administration</li>
   <li>GPA: 3.9</li>
+  <li>Emphasis in Public Administration</li>
   <li>Academic Scholarship - Thomas E. Ricks Grant</li>
 </ul>
 
