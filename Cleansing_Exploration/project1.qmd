@@ -250,60 +250,60 @@ df2
 ```
 
 ```{python}
-# Employment data for Texas
-# https://data.bls.gov/oes/#/area/4800000
+# # Employment data for Texas
+# # https://data.bls.gov/oes/#/area/4800000
 
-#Selenium link
-# https://builtin.com/articles/selenium-web-scraping
+# #Selenium link
+# # https://builtin.com/articles/selenium-web-scraping
 
-cService = webdriver.ChromeService(executable_path='C:/Users/lrive/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe')
-driver = webdriver.Chrome(service=cService)
+# cService = webdriver.ChromeService(executable_path='C:/Users/lrive/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe')
+# driver = webdriver.Chrome(service=cService)
 
-driver.get('https://data.bls.gov/oes/#/area/4800000')
+# driver.get('https://data.bls.gov/oes/#/area/4800000')
 
-# Wait for the table body to be present (I adjust the time in seconds as needed)
-WebDriverWait(driver, 20).until(
-    EC.presence_of_element_located((By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/tbody/tr[1]'))
-)
+# # Wait for the table body to be present (I adjust the time in seconds as needed)
+# WebDriverWait(driver, 20).until(
+#     EC.presence_of_element_located((By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/tbody/tr[1]'))
+# )
 
-table_body = driver.find_element(By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/tbody')
-table_rows = table_body.find_elements(By.TAG_NAME, 'tr')
+# table_body = driver.find_element(By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/tbody')
+# table_rows = table_body.find_elements(By.TAG_NAME, 'tr')
 
-headers_list = []
-rows_list = []
-for item in driver.find_elements(By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/tbody/tr'):
-  if item.text != '':
-    # first I split the text with comma as the delimiter wherever a new line occurs (this happens once every row)
-    row = item.text.split('\n')
-    # Here I append the first string value in the row to the list
-    rows_list.append(row[0])
-    # Here I replace any dash in the second string with a space
-    row[1] = row[1].translate(str.maketrans({'-': ' '}))
-    # Here I split the second string with a comma wherever a space occurs - these strings are in their own list (list within a list)
-    row[1] = row[1].split(' ')
-    # I append the items in the nested list to the rows_list variable
-    for value in row[1]:
-      rows_list.append(value)
-    # if len(item.text) > 0:
-      # rows_list.append(item.text)
-      # rows_list.append(individual_item)
-# driver.quit()
+# headers_list = []
+# rows_list = []
+# for item in driver.find_elements(By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/tbody/tr'):
+#   if item.text != '':
+#     # first I split the text with comma as the delimiter wherever a new line occurs (this happens once every row)
+#     row = item.text.split('\n')
+#     # Here I append the first string value in the row to the list
+#     rows_list.append(row[0])
+#     # Here I replace any dash in the second string with a space
+#     row[1] = row[1].translate(str.maketrans({'-': ' '}))
+#     # Here I split the second string with a comma wherever a space occurs - these strings are in their own list (list within a list)
+#     row[1] = row[1].split(' ')
+#     # I append the items in the nested list to the rows_list variable
+#     for value in row[1]:
+#       rows_list.append(value)
+#     # if len(item.text) > 0:
+#       # rows_list.append(item.text)
+#       # rows_list.append(individual_item)
+# # driver.quit()
 
-# I now use list comprehension to remove any empty strings in the list
-new_rows_list = [non_blank_value for non_blank_value in rows_list if non_blank_value != '']
+# # I now use list comprehension to remove any empty strings in the list
+# new_rows_list = [non_blank_value for non_blank_value in rows_list if non_blank_value != '']
 
-for item in driver.find_elements(By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/thead/tr/th'):
-  if item.text != '':
-    headers_list.append(item.text)
+# for item in driver.find_elements(By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/thead/tr/th'):
+#   if item.text != '':
+#     headers_list.append(item.text)
     
-driver.quit()
+# driver.quit()
 
 ```
 
 ```{python}
-# df3 = pd.DataFrame(new_rows_list, columns = headers_list)
+# # df3 = pd.DataFrame(new_rows_list, columns = headers_list)
 
-# df3
+# # df3
 
-headers_list
+# headers_list
 ```
