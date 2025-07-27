@@ -38,6 +38,33 @@ toc: false
 ## Education
 :::
 
+::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
+### MS in Business Analytics and Artificial Intelligence
+:::
+**University of Texas - Dallas** | Dallas, TX  
+**Starting Jan 2026** 
+
+<ul class="education-list">
+  <li>Data Science emphasis</li>
+  <li>Coursework includes: Database Foundations, Advanced Statistics, Data Warehousing, Predictive Analytics, Business Analytics With R, Applied Machine Learning, Big Data, Applied Natural Language Processing, Applied Deep Learning, and AWS Cloud Solution Architecture.  </li>
+  <li>Academic Scholarship - Thomas E. Ricks Grant</li>
+</ul>
+
+---
+
+::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
+### Data Science Online Coursework
+:::
+**Brigham Young University - Idaho** | Rexburg, ID  
+**Aug 2024 - Dec 2025**  
+
+<ul class="education-list">
+  <li>Additional programming and data science courses taken through the BYU-I BS in Data Science major.</li>
+  <li>Coursework included: Programming Building Blocks, Programming with Functions, Technical Teamwork, Algorithm Design, Web Fundamentals, Programming with Classes, Intro to Databases, SQL, and Data Science Programming.</li>
+  <li>GPA: 4.0</li>
+</ul>
+
+---
 
 ::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
 ### Bachelor of Arts in Public Policy and Administration
@@ -53,16 +80,6 @@ toc: false
 
 ---
 
-::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
-### Bachelor of Science in Data Science Online Coursework
-:::
-**Brigham Young University - Idaho** | Rexburg, ID  
-**Aug 2024 - Present**  
-
-<ul class="education-list">
-  <li>Additional courses taken through the BYU-I BS in Data Science major.</li>
-</ul>
-
 ::: {.header-box}
 ## Professional Experience
 :::
@@ -70,7 +87,7 @@ toc: false
 ::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
 ### Administrative Analyst I
 :::  
-**New Jersey Department of Transportation** | Ewing, NJ  
+**New Jersey Department of Transportation** | Transportation Mobility Research Unit 
 **Jan 2023 - May 2024**
 
 <ul class="education-professional-list">
@@ -87,7 +104,7 @@ toc: false
 ::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
 ### Instructor Evaluation Support Specialist/Statistics Tutoring Assistant
 :::    
-**Brigham Young University-Idaho** | Rexburg, ID  
+**Brigham Young University-Idaho** | Tutoring Center 
 **Apr 2021 - Dec 2021**  
 
 <ul class="education-professional-list">
@@ -101,7 +118,7 @@ toc: false
 ::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
 ### Custodian
 ::: 
-**Brigham Young University-Idaho** | Rexburg, ID  
+**Brigham Young University-Idaho** | Custodial Unit
 **Jan 2019 - Apr 2020**  
 
 <ul class="education-professional-list">
@@ -115,7 +132,7 @@ toc: false
 ::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
 ### Ambassador
 :::   
-**Church of Jesus Christ of Latter-day Saints** | San Fernando, CA  
+**Church of Jesus Christ of Latter-day Saints** | Full-Time Missionary 
 **Aug 2016 - Jul 2018**  
 
 <ul class="education-professional-list">
