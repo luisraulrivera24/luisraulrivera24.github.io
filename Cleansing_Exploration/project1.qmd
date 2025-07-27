@@ -1,14 +1,13 @@
 ---
-title: "Client Report - [Insert Project Title]"
-subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+title: "Machine Learning Jobs"
+author: "Luis Rivera"
 format:
   html:
     self-contained: true
     page-layout: full
     title-block-banner: true
     toc: true
-    toc-depth: 3
+    toc-depth: 2
     toc-location: body
     number-sections: false
     html-math-method: katex
@@ -25,4 +24,286 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+# Install dependencies as needed:
+# pip install kagglehub[pandas-datasets]
+import requests, csv
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import kaggle
+import pandas as pd
+import numpy as np
+from lets_plot import *
+import textwrap
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+LetsPlot.setup_html(isolated_frame=True)
+
+```
+
+```{python}
+# Authenticating my API
+kaggle.api.authenticate()
+kaggle.api.dataset_download_files('hummaamqaasim/jobs-in-data', path='.', unzip=True)
+
+# download the csv dataset into dataframe
+df = pd.read_csv('cleansing_exploration_datasets/jobs_in_data.csv')
+
+# check for missing values
+df.isna().sum()
+
+# check datatypes of each column
+df.dtypes
+
+# filter dataset for only US based companies and employees that have a residence in the US
+df = df[(df['employee_residence'].isin(['United States'])) & df['company_location'].isin(['United States'])]
+
+# see what years this dataset covers
+df['job_category'].unique()
+```
+
+```{python}
+# Filtering the dataset to only include the year 2023
+df1 = df.loc[(df['work_year'] == 2023)].reset_index(drop=True)
+# I group by job category and the mean salary in USD
+df1 = round(df1.groupby('job_category').agg(
+      avg_salary=('salary_in_usd', 'mean'),
+      job_count=('job_category', 'count')
+    ).reset_index(),2)
+
+# Here I create my line graph to see salaries for each job title in the US
+(
+  ggplot(df1, aes(x = 'avg_salary', y = 'job_category', fill='job_category'))
+  # Here I create line and give it a size
+  + geom_bar(size = 1.5, stat='identity', show_legend= False)
+  # Here I have the different colors for each line
+  + scale_color_manual(values=['#66FF03','#ff000d','#ffff00', '#0099ff', '#f58231',
+                                '#911eb4', '#fabed4', '#f032e6', '#dcbeff', '#800000'])
+  # Here I change the scale intervals in the x-axis and y-axis and format the x-axis years to not show a comma
+  + scale_x_continuous(format= ',d', breaks=np.arange(0, 250000, step=50000))
+  # + scale_y_continuous(breaks=np.arange(95000, 200000, step=50000))
+  # Here I cut off any part of the graph I do not need
+  # + coord_cartesian(xlim=(1920, 2000), ylim=(0, 55000))
+  + theme(
+        # change the complete background to black
+        plot_background=element_rect(fill='#36454F'),
+        # changing the grid color lines to shade of white. Also changed size of the grid lines
+        panel_grid=element_line(color='#E2DFD2', size=1),
+        # this is how I changed the y-axis and x-axis numbers labels to white, as well as their respective titles
+        axis_text = element_text(color='white'),
+        # axis_title = element_text(color='white'),
+        # this is how I made the title and subtitle white
+        title = element_text(color='white'),
+        # Here I make the y-axis labels smaller
+        axis_text_y=element_text(size=9),
+        # Here I make the x-axis labels smaller
+        axis_text_x=element_text(size=10),
+        # Here I change the position of the title and subtitle to be on the left side of the plot
+        plot_title_position='plot',
+        # Here I add a margin around the entire plot
+        plot_margin = 25,
+        axis_title=element_text(size=13)
+      )
+  # Here I add the title, subtitle, x-axis and y-axis titles
+  + labs(
+        title = 'Salaries for Each Job Title in the US',
+        subtitle = '2023 Results',
+        x = 'Average Salary in USD',
+        y = 'Job Category' 
+        )
+)
+```
+
+```{python}
+# Here I create my line graph to see salaries for each job title in the US
+(
+  ggplot(df1, aes(x = 'job_category', y = 'job_count', fill='job_category'))
+  # Here I create line and give it a size
+  + geom_bar(size = 1.5, stat='identity', show_legend= True)
+  # Here I have the different colors for each line
+  + scale_color_manual(values=['#66FF03','#ff000d','#ffff00', '#0099ff', '#f58231',
+                                '#911eb4', '#fabed4', '#f032e6', '#dcbeff', '#800000'])
+  # Here I change the scale intervals in the x-axis and y-axis and format the x-axis years to not show a comma
+  # + scale_x_continuous(format= ',d', breaks=np.arange(0, 250000, step=50000))
+  + scale_y_continuous(breaks=np.arange(0, 2400, step=200))
+  # Here I cut off any part of the graph I do not need
+  # + coord_cartesian(xlim=(1920, 2000), ylim=(0, 55000))
+  + theme(
+        # change the complete background to black
+        plot_background=element_rect(fill='#36454F'),
+        # changing the grid color lines to shade of white. Also changed size of the grid lines
+        panel_grid=element_line(color='#E2DFD2', size=1),
+        # this is how I changed the y-axis and x-axis numbers labels to white, as well as their respective titles
+        axis_text = element_text(color='white'),
+        # axis_title = element_text(color='white'),
+        # this is how I made the title and subtitle white
+        title = element_text(color='white'),
+        # Here I make the y-axis labels smaller
+        axis_text_y=element_text(size=9),
+        # Here I make the x-axis labels smaller
+        axis_text_x=element_text(size=0),
+        # Here I change the position of the title and subtitle to be on the left side of the plot
+        plot_title_position='panel',
+        # Here I add a margin around the entire plot
+        plot_margin = 25,
+        # Here I change the size of the titles in the axes
+        axis_title=element_text(size=13),
+        # here I change the background of the legend
+        legend_background=element_rect('#36454F'),
+        # Here I change the legend key text to white and the size of text
+        legend_text=element_text(size=10, color='white')
+      )
+  # Here I add the title, subtitle, x-axis and y-axis titles
+  + labs(
+        title = 'Job Count for Each Job Title',
+        subtitle = '2023 US Results',
+        x = '',
+        y = 'Job Count',
+        fill='Job Category'
+        )
+)
+```
+
+```{python}
+df
+```
+
+```{python}
+# source - Texas one year estimate jobs by specialization
+# https://data.census.gov/table/ACSDT1Y2023.B15012?q=texas+education+degrees+in+2023
+
+
+data = requests.get('https://api.census.gov/data/2023/acs/acs1?get=group(B15012)&ucgid=0400000US48').json()
+
+variables= ['B15012_002E','B15012_003E','B15012_004E','B15012_005E','B15012_006E','B15012_007E','B15012_008E','B15012_009E', 'B15012_010E','B15012_011E','B15012_012E','B15012_013E','B15012_014E','B15012_015E','B15012_016E']
+
+labels= ['Computers, Mathematics, and Statistics','Bilogical, Agricultural, and Environmental Sciences','Physical and Related Sciences','Psychology',
+         'Social Sciences','Engineering','Multidisciplinary Studies','Science and Engineering Related Fields','Business','Education',
+         'Literature and Languages','Liberal Arts and History','Visual and Performing Arts','Communications','Other']
+
+# B15012_002E: Science and Engineering- Computers, Mathematics, and Statistics
+# B15012_003E: Science and Engineering- Bilogical, Agricultural, and Environmental Sciences
+# B15012_004E: Science and Engineering- Physical and Related Sciences
+# B15012_005E: Science and Engineering- Psychology
+# B15012_006E: Science and Engineering- Social Sciences
+# B15012_007E: Science and Engineering- Engineering
+# B15012_008E: Science and Engineering- Multidisciplinary Studies
+# B15012_009E: Science and Engineering- Science and Engineering Related Fields
+# B15012_010E: Science and Engineering- Business
+# B15012_011E: Science and Engineering- Education
+# B15012_012E: Arts, Humanities, and Other- Literature and Languages
+# B15012_013E: Arts, Humanities, and Other- Liberal Arts and History
+# B15012_014E: Arts, Humanities, and Other- Visual and Performing Arts
+# B15012_015E: Arts, Humanities, and Other- Communications
+# B15012_016E: Arts, Humanities, and Other- Other
+
+# Created a dataframe with the data from the API
+df2 = pd.DataFrame(data)
+# Changed column names
+df2.columns= df2.iloc[0]
+# Dropped the first row of the dataframe
+df2 = df2.drop(df2.index[0])
+
+# filtered the dataframe to only include the columns I need
+df2 = df2[['B15012_002E','B15012_003E','B15012_004E','B15012_005E','B15012_006E','B15012_007E','B15012_008E','B15012_009E', 'B15012_010E','B15012_011E','B15012_012E','B15012_013E','B15012_014E','B15012_015E','B15012_016E']]
+
+for index, value in enumerate(df2.columns):
+  df2 = df2.rename(columns={df2.columns[index]: labels[index]})
+
+df2.reset_index(drop=True, inplace=True)
+df2 = df2.melt()
+
+df2 = df2.rename(columns={0: 'Specialization', 'value':'Total Estimated'}).sort_values(by='Total Estimated', ascending=False).reset_index(drop=True)
+
+df2
+```
+
+```{python}
+# # Employment data for Texas
+# # https://data.bls.gov/oes/#/area/4800000
+
+# #Selenium link
+# # https://builtin.com/articles/selenium-web-scraping
+
+# cService = webdriver.ChromeService(executable_path='C:/Users/lrive/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe')
+# driver = webdriver.Chrome(service=cService)
+
+# driver.get('https://data.bls.gov/oes/#/area/4800000')
+
+# table_body = driver.find_element(By.TAG_NAME, 'tbody')
+# table_rows = table_body.find_elements(By.TAG_NAME, 'tr')
+
+# with open('movie_data.csv', mode='w') as file:
+#   writer = csv.writer(file)
+#   for row in table_rows:
+#     table_data = row.find_elements(By.TAG_NAME, 'td')
+#     row_data = []
+#     for data in table_data:
+#       row_data.append(data.text)
+#     wruter,writerow(row_data)
+
+# driver.quit()
+
+```
+
+```{python}
+# Employment data for Texas
+# https://data.bls.gov/oes/#/area/4800000
+
+#Selenium link
+# https://builtin.com/articles/selenium-web-scraping
+
+cService = webdriver.ChromeService(executable_path='C:/Users/lrive/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe')
+driver = webdriver.Chrome(service=cService)
+
+driver.get('https://data.bls.gov/oes/#/area/4800000')
+
+# Wait for the table body to be present (I adjust the time in seconds as needed)
+WebDriverWait(driver, 20).until(
+    EC.presence_of_element_located((By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/tbody/tr[1]'))
+)
+
+table_body = driver.find_element(By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/tbody')
+table_rows = table_body.find_elements(By.TAG_NAME, 'tr')
+
+headers_list = []
+rows_list = []
+for item in driver.find_elements(By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/tbody/tr'):
+  if item.text != '':
+    # first I split the text with comma as the delimiter wherever a new line occurs (this happens once every row)
+    row = item.text.split('\n')
+    # Here I append the first string value in the row to the list
+    rows_list.append(row[0])
+    # Here I replace any dash in the second string with a space
+    row[1] = row[1].translate(str.maketrans({'-': ' '}))
+    # Here I split the second string with a comma wherever a space occurs - these strings are in their own list (list within a list)
+    row[1] = row[1].split(' ')
+    # I append the items in the nested list to the rows_list variable
+    for value in row[1]:
+      rows_list.append(value)
+    # if len(item.text) > 0:
+      # rows_list.append(item.text)
+      # rows_list.append(individual_item)
+# driver.quit()
+
+# I now use list comprehension to remove any empty strings in the list
+new_rows_list = [non_blank_value for non_blank_value in rows_list if non_blank_value != '']
+
+for item in driver.find_elements(By.XPATH, '//*[@id="oes-container"]/div/div/div[2]/div/div[2]/div/table/thead/tr/th'):
+  if item.text != '':
+    headers_list.append(item.text)
+    
+driver.quit()
+
+```
+
+```{python}
+# df3 = pd.DataFrame(new_rows_list, columns = headers_list)
+
+# df3
+
+headers_list
+```
