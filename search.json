@@ -1,163 +1,13 @@
 [
   {
-    "objectID": "Story_Telling/project1.html",
-    "href": "Story_Telling/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project2.html",
-    "href": "Story_Telling/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project4.html",
-    "href": "Story_Telling/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 4"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project3.html",
-    "href": "Machine_Learning/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project5.html",
-    "href": "Machine_Learning/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "full_stack.html",
-    "href": "full_stack.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Full Stack"
-    ]
-  },
-  {
-    "objectID": "full_stack.html#title-2-header",
-    "href": "full_stack.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Full Stack"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project3.html",
-    "href": "Full_Stack/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project5.html",
-    "href": "Full_Stack/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "competition.html",
-    "href": "competition.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Competition"
-    ]
-  },
-  {
-    "objectID": "competition.html#title-2-header",
-    "href": "competition.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Competition"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project3.html",
-    "href": "Cleansing_Projects/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project5.html",
-    "href": "Cleansing_Projects/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "Competition/project1.html",
-    "href": "Competition/project1.html",
+    "objectID": "Competition/project3.html",
+    "href": "Competition/project3.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
       "Competition",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Competition/project2.html",
-    "href": "Competition/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 2"
+      "Project 3"
     ]
   },
   {
@@ -172,141 +22,37 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics"
-  },
-  {
-    "objectID": "index.html#title-2-header",
-    "href": "index.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics"
-  },
-  {
-    "objectID": "Cleansing_Exploration/project3.html",
-    "href": "Cleansing_Exploration/project3.html",
+    "objectID": "Competition/project2.html",
+    "href": "Competition/project2.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 2"
+    ]
   },
   {
-    "objectID": "Cleansing_Exploration/project5.html",
-    "href": "Cleansing_Exploration/project5.html",
+    "objectID": "Full_Stack/project5.html",
+    "href": "Full_Stack/project5.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "resume.html",
-    "href": "resume.html",
-    "title": "Luis Rivera",
-    "section": "",
-    "text": "303-960-6369 | LuisRaulRivera24@gmail.com | linkedin.com/in/luisrivera98\nBrigham Young University - Idaho | Rexburg, ID\nSep 2018 - Dec 2021\nBrigham Young University - Idaho | Rexburg, ID\nAug 2024 - Present\nNew Jersey Department of Transportation | Ewing, NJ\nJan 2023 - May 2024\nBrigham Young University-Idaho | Rexburg, ID\nApr 2021 - Dec 2021\nBrigham Young University-Idaho | Rexburg, ID\nJan 2019 - Apr 2020\nChurch of Jesus Christ of Latter-day Saints | San Fernando, CA\nAug 2016 - Jul 2018"
-  },
-  {
-    "objectID": "resume.html#areas-of-expertise",
-    "href": "resume.html#areas-of-expertise",
-    "title": "Luis Rivera",
-    "section": "Areas of Expertise",
-    "text": "Areas of Expertise"
-  },
-  {
-    "objectID": "resume.html#education",
-    "href": "resume.html#education",
-    "title": "Luis Rivera",
-    "section": "Education",
-    "text": "Education"
-  },
-  {
-    "objectID": "resume.html#professional-experience",
-    "href": "resume.html#professional-experience",
-    "title": "Luis Rivera",
-    "section": "Professional Experience",
-    "text": "Professional Experience"
-  },
-  {
-    "objectID": "ml.html",
-    "href": "ml.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Machine Learning"
+      "Full Stack",
+      "Project 5"
     ]
   },
   {
-    "objectID": "ml.html#title-2-header",
-    "href": "ml.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Machine Learning"
-    ]
-  },
-  {
-    "objectID": "cleansing.html",
-    "href": "cleansing.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Data Cleansing"
-    ]
-  },
-  {
-    "objectID": "cleansing.html#title-2-header",
-    "href": "cleansing.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Data Cleansing"
-    ]
-  },
-  {
-    "objectID": "story_telling.html",
-    "href": "story_telling.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Story Telling"
-    ]
-  },
-  {
-    "objectID": "story_telling.html#title-2-header",
-    "href": "story_telling.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Story Telling"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Exploration/project4.html",
-    "href": "Cleansing_Exploration/project4.html",
+    "objectID": "Full_Stack/project1.html",
+    "href": "Full_Stack/project1.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "Cleansing_Exploration/project2.html",
-    "href": "Cleansing_Exploration/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "Cleansing_Exploration/project1.html",
-    "href": "Cleansing_Exploration/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 1"
+    ]
   },
   {
     "objectID": "exploration.html",
@@ -329,113 +75,14 @@
     ]
   },
   {
-    "objectID": "Competition/project5.html",
-    "href": "Competition/project5.html",
+    "objectID": "Machine_Learning/project5.html",
+    "href": "Machine_Learning/project5.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Competition",
+      "Machine Learning",
       "Project 5"
-    ]
-  },
-  {
-    "objectID": "Competition/project3.html",
-    "href": "Competition/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project4.html",
-    "href": "Cleansing_Projects/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
-      "Project 4"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project2.html",
-    "href": "Cleansing_Projects/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project1.html",
-    "href": "Cleansing_Projects/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project4.html",
-    "href": "Full_Stack/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 4"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project2.html",
-    "href": "Full_Stack/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project1.html",
-    "href": "Full_Stack/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project4.html",
-    "href": "Machine_Learning/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 4"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project2.html",
-    "href": "Machine_Learning/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 2"
     ]
   },
   {
@@ -505,6 +152,99 @@
     ]
   },
   {
+    "objectID": "full_stack.html",
+    "href": "full_stack.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Full Stack"
+    ]
+  },
+  {
+    "objectID": "full_stack.html#title-2-header",
+    "href": "full_stack.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Full Stack"
+    ]
+  },
+  {
+    "objectID": "ml.html",
+    "href": "ml.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "ml.html#title-2-header",
+    "href": "ml.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project3.html",
+    "href": "Cleansing_Projects/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project4.html",
+    "href": "Cleansing_Projects/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 4"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project2.html",
+    "href": "Cleansing_Projects/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "story_telling.html",
+    "href": "story_telling.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Story Telling"
+    ]
+  },
+  {
+    "objectID": "story_telling.html#title-2-header",
+    "href": "story_telling.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Story Telling"
+    ]
+  },
+  {
     "objectID": "Story_Telling/project5.html",
     "href": "Story_Telling/project5.html",
     "title": "Client Report - [Insert Project Title]",
@@ -516,6 +256,94 @@
     ]
   },
   {
+    "objectID": "Story_Telling/project1.html",
+    "href": "Story_Telling/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project3.html",
+    "href": "Cleansing_Exploration/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Exploration/project4.html",
+    "href": "Cleansing_Exploration/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Exploration/project2.html",
+    "href": "Cleansing_Exploration/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "cleansing.html",
+    "href": "cleansing.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "cleansing.html#title-2-header",
+    "href": "cleansing.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project1.html",
+    "href": "Cleansing_Exploration/project1.html",
+    "title": "Machine Learning Jobs",
+    "section": "",
+    "text": "Show the code\n# # Install dependencies as needed:\n# # pip install kagglehub[pandas-datasets]\n# import requests, csv\n# from bs4 import BeautifulSoup\n# from selenium import webdriver\n# from selenium.webdriver.common.keys import Keys\n# from selenium.webdriver.common.by import By\n# import kaggle\n# import pandas as pd\n# import numpy as np\n# from lets_plot import *\n# import textwrap\n# from selenium.webdriver.support.ui import WebDriverWait\n# from selenium.webdriver.support import expected_conditions as EC\n\n# LetsPlot.setup_html(isolated_frame=True)\n\n\n\n\nShow the code\n# # Authenticating my API\n# kaggle.api.authenticate()\n# kaggle.api.dataset_download_files('hummaamqaasim/jobs-in-data', path='.', unzip=True)\n\n# # download the csv dataset into dataframe\n# df = pd.read_csv('cleansing_exploration_datasets/jobs_in_data.csv')\n\n# # check for missing values\n# df.isna().sum()\n\n# # check datatypes of each column\n# df.dtypes\n\n# # filter dataset for only US based companies and employees that have a residence in the US\n# df = df[(df['employee_residence'].isin(['United States'])) & df['company_location'].isin(['United States'])]\n\n# # see what years this dataset covers\n# df['job_category'].unique()\n\n\n\n\nShow the code\n# # Filtering the dataset to only include the year 2023\n# df1 = df.loc[(df['work_year'] == 2023)].reset_index(drop=True)\n# # I group by job category and the mean salary in USD\n# df1 = round(df1.groupby('job_category').agg(\n#       avg_salary=('salary_in_usd', 'mean'),\n#       job_count=('job_category', 'count')\n#     ).reset_index(),2)\n\n# # Here I create my line graph to see salaries for each job title in the US\n# (\n#   ggplot(df1, aes(x = 'avg_salary', y = 'job_category', fill='job_category'))\n#   # Here I create line and give it a size\n#   + geom_bar(size = 1.5, stat='identity', show_legend= False)\n#   # Here I have the different colors for each line\n#   + scale_color_manual(values=['#66FF03','#ff000d','#ffff00', '#0099ff', '#f58231',\n#                                 '#911eb4', '#fabed4', '#f032e6', '#dcbeff', '#800000'])\n#   # Here I change the scale intervals in the x-axis and y-axis and format the x-axis years to not show a comma\n#   + scale_x_continuous(format= ',d', breaks=np.arange(0, 250000, step=50000))\n#   # + scale_y_continuous(breaks=np.arange(95000, 200000, step=50000))\n#   # Here I cut off any part of the graph I do not need\n#   # + coord_cartesian(xlim=(1920, 2000), ylim=(0, 55000))\n#   + theme(\n#         # change the complete background to black\n#         plot_background=element_rect(fill='#36454F'),\n#         # changing the grid color lines to shade of white. Also changed size of the grid lines\n#         panel_grid=element_line(color='#E2DFD2', size=1),\n#         # this is how I changed the y-axis and x-axis numbers labels to white, as well as their respective titles\n#         axis_text = element_text(color='white'),\n#         # axis_title = element_text(color='white'),\n#         # this is how I made the title and subtitle white\n#         title = element_text(color='white'),\n#         # Here I make the y-axis labels smaller\n#         axis_text_y=element_text(size=9),\n#         # Here I make the x-axis labels smaller\n#         axis_text_x=element_text(size=10),\n#         # Here I change the position of the title and subtitle to be on the left side of the plot\n#         plot_title_position='plot',\n#         # Here I add a margin around the entire plot\n#         plot_margin = 25,\n#         axis_title=element_text(size=13)\n#       )\n#   # Here I add the title, subtitle, x-axis and y-axis titles\n#   + labs(\n#         title = 'Salaries for Each Job Title in the US',\n#         subtitle = '2023 Results',\n#         x = 'Average Salary in USD',\n#         y = 'Job Category' \n#         )\n# )\n\n\n\n\nShow the code\n# # Here I create my line graph to see salaries for each job title in the US\n# (\n#   ggplot(df1, aes(x = 'job_category', y = 'job_count', fill='job_category'))\n#   # Here I create line and give it a size\n#   + geom_bar(size = 1.5, stat='identity', show_legend= True)\n#   # Here I have the different colors for each line\n#   + scale_color_manual(values=['#66FF03','#ff000d','#ffff00', '#0099ff', '#f58231',\n#                                 '#911eb4', '#fabed4', '#f032e6', '#dcbeff', '#800000'])\n#   # Here I change the scale intervals in the x-axis and y-axis and format the x-axis years to not show a comma\n#   # + scale_x_continuous(format= ',d', breaks=np.arange(0, 250000, step=50000))\n#   + scale_y_continuous(breaks=np.arange(0, 2400, step=200))\n#   # Here I cut off any part of the graph I do not need\n#   # + coord_cartesian(xlim=(1920, 2000), ylim=(0, 55000))\n#   + theme(\n#         # change the complete background to black\n#         plot_background=element_rect(fill='#36454F'),\n#         # changing the grid color lines to shade of white. Also changed size of the grid lines\n#         panel_grid=element_line(color='#E2DFD2', size=1),\n#         # this is how I changed the y-axis and x-axis numbers labels to white, as well as their respective titles\n#         axis_text = element_text(color='white'),\n#         # axis_title = element_text(color='white'),\n#         # this is how I made the title and subtitle white\n#         title = element_text(color='white'),\n#         # Here I make the y-axis labels smaller\n#         axis_text_y=element_text(size=9),\n#         # Here I make the x-axis labels smaller\n#         axis_text_x=element_text(size=0),\n#         # Here I change the position of the title and subtitle to be on the left side of the plot\n#         plot_title_position='panel',\n#         # Here I add a margin around the entire plot\n#         plot_margin = 25,\n#         # Here I change the size of the titles in the axes\n#         axis_title=element_text(size=13),\n#         # here I change the background of the legend\n#         legend_background=element_rect('#36454F'),\n#         # Here I change the legend key text to white and the size of text\n#         legend_text=element_text(size=10, color='white')\n#       )\n#   # Here I add the title, subtitle, x-axis and y-axis titles\n#   + labs(\n#         title = 'Job Count for Each Job Title',\n#         subtitle = '2023 US Results',\n#         x = '',\n#         y = 'Job Count',\n#         fill='Job Category'\n#         )\n# )\n\n\n\n\nShow the code\n# df\n\n\n\n\nShow the code\n# # source - Texas one year estimate jobs by specialization\n# # https://data.census.gov/table/ACSDT1Y2023.B15012?q=texas+education+degrees+in+2023\n\n\n# data = requests.get('https://api.census.gov/data/2023/acs/acs1?get=group(B15012)&ucgid=0400000US48').json()\n\n# variables= ['B15012_002E','B15012_003E','B15012_004E','B15012_005E','B15012_006E','B15012_007E','B15012_008E','B15012_009E', 'B15012_010E','B15012_011E','B15012_012E','B15012_013E','B15012_014E','B15012_015E','B15012_016E']\n\n# labels= ['Computers, Mathematics, and Statistics','Bilogical, Agricultural, and Environmental Sciences','Physical and Related Sciences','Psychology',\n#          'Social Sciences','Engineering','Multidisciplinary Studies','Science and Engineering Related Fields','Business','Education',\n#          'Literature and Languages','Liberal Arts and History','Visual and Performing Arts','Communications','Other']\n\n# # B15012_002E: Science and Engineering- Computers, Mathematics, and Statistics\n# # B15012_003E: Science and Engineering- Bilogical, Agricultural, and Environmental Sciences\n# # B15012_004E: Science and Engineering- Physical and Related Sciences\n# # B15012_005E: Science and Engineering- Psychology\n# # B15012_006E: Science and Engineering- Social Sciences\n# # B15012_007E: Science and Engineering- Engineering\n# # B15012_008E: Science and Engineering- Multidisciplinary Studies\n# # B15012_009E: Science and Engineering- Science and Engineering Related Fields\n# # B15012_010E: Science and Engineering- Business\n# # B15012_011E: Science and Engineering- Education\n# # B15012_012E: Arts, Humanities, and Other- Literature and Languages\n# # B15012_013E: Arts, Humanities, and Other- Liberal Arts and History\n# # B15012_014E: Arts, Humanities, and Other- Visual and Performing Arts\n# # B15012_015E: Arts, Humanities, and Other- Communications\n# # B15012_016E: Arts, Humanities, and Other- Other\n\n# # Created a dataframe with the data from the API\n# df2 = pd.DataFrame(data)\n# # Changed column names\n# df2.columns= df2.iloc[0]\n# # Dropped the first row of the dataframe\n# df2 = df2.drop(df2.index[0])\n\n# # filtered the dataframe to only include the columns I need\n# df2 = df2[['B15012_002E','B15012_003E','B15012_004E','B15012_005E','B15012_006E','B15012_007E','B15012_008E','B15012_009E', 'B15012_010E','B15012_011E','B15012_012E','B15012_013E','B15012_014E','B15012_015E','B15012_016E']]\n\n# for index, value in enumerate(df2.columns):\n#   df2 = df2.rename(columns={df2.columns[index]: labels[index]})\n\n# df2.reset_index(drop=True, inplace=True)\n# df2 = df2.melt()\n\n# df2 = df2.rename(columns={0: 'Specialization', 'value':'Total Estimated'}).sort_values(by='Total Estimated', ascending=False).reset_index(drop=True)\n\n# df2\n\n\n\n\nShow the code\n# # Employment data for Texas\n# # https://data.bls.gov/oes/#/area/4800000\n\n# #Selenium link\n# # https://builtin.com/articles/selenium-web-scraping\n\n# cService = webdriver.ChromeService(executable_path='C:/Users/lrive/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe')\n# driver = webdriver.Chrome(service=cService)\n\n# driver.get('https://data.bls.gov/oes/#/area/4800000')\n\n# table_body = driver.find_element(By.TAG_NAME, 'tbody')\n# table_rows = table_body.find_elements(By.TAG_NAME, 'tr')\n\n# with open('movie_data.csv', mode='w') as file:\n#   writer = csv.writer(file)\n#   for row in table_rows:\n#     table_data = row.find_elements(By.TAG_NAME, 'td')\n#     row_data = []\n#     for data in table_data:\n#       row_data.append(data.text)\n#     wruter,writerow(row_data)\n\n# driver.quit()\n\n\n\n\nShow the code\n# # Employment data for Texas\n# # https://data.bls.gov/oes/#/area/4800000\n\n# #Selenium link\n# # https://builtin.com/articles/selenium-web-scraping\n\n# cService = webdriver.ChromeService(executable_path='C:/Users/lrive/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe')\n# driver = webdriver.Chrome(service=cService)\n\n# driver.get('https://data.bls.gov/oes/#/area/4800000')\n\n# # Wait for the table body to be present (I adjust the time in seconds as needed)\n# WebDriverWait(driver, 20).until(\n#     EC.presence_of_element_located((By.XPATH, '//*[@id=\"oes-container\"]/div/div/div[2]/div/div[2]/div/table/tbody/tr[1]'))\n# )\n\n# table_body = driver.find_element(By.XPATH, '//*[@id=\"oes-container\"]/div/div/div[2]/div/div[2]/div/table/tbody')\n# table_rows = table_body.find_elements(By.TAG_NAME, 'tr')\n\n# headers_list = []\n# rows_list = []\n# for item in driver.find_elements(By.XPATH, '//*[@id=\"oes-container\"]/div/div/div[2]/div/div[2]/div/table/tbody/tr'):\n#   if item.text != '':\n#     # first I split the text with comma as the delimiter wherever a new line occurs (this happens once every row)\n#     row = item.text.split('\\n')\n#     # Here I append the first string value in the row to the list\n#     rows_list.append(row[0])\n#     # Here I replace any dash in the second string with a space\n#     row[1] = row[1].translate(str.maketrans({'-': ' '}))\n#     # Here I split the second string with a comma wherever a space occurs - these strings are in their own list (list within a list)\n#     row[1] = row[1].split(' ')\n#     # I append the items in the nested list to the rows_list variable\n#     for value in row[1]:\n#       rows_list.append(value)\n#     # if len(item.text) &gt; 0:\n#       # rows_list.append(item.text)\n#       # rows_list.append(individual_item)\n# # driver.quit()\n\n# # I now use list comprehension to remove any empty strings in the list\n# new_rows_list = [non_blank_value for non_blank_value in rows_list if non_blank_value != '']\n\n# for item in driver.find_elements(By.XPATH, '//*[@id=\"oes-container\"]/div/div/div[2]/div/div[2]/div/table/thead/tr/th'):\n#   if item.text != '':\n#     headers_list.append(item.text)\n    \n# driver.quit()\n\n\n\n\nShow the code\n# # df3 = pd.DataFrame(new_rows_list, columns = headers_list)\n\n# # df3\n\n# headers_list\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Exploration/project5.html",
+    "href": "Cleansing_Exploration/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Story_Telling/project2.html",
+    "href": "Story_Telling/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project4.html",
+    "href": "Story_Telling/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 4"
+    ]
+  },
+  {
     "objectID": "Story_Telling/project3.html",
     "href": "Story_Telling/project3.html",
     "title": "Client Report - [Insert Project Title]",
@@ -524,6 +352,178 @@
     "crumbs": [
       "Story Telling",
       "Project 3"
+    ]
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Luis Rivera",
+    "section": "",
+    "text": "303-960-6369 | LuisRaulRivera24@gmail.com | linkedin.com/in/luisrivera98\nUniversity of Texas - Dallas | Dallas, TX\nStarting Jan 2026\nBrigham Young University - Idaho | Rexburg, ID\nAug 2024 - Dec 2025\nBrigham Young University - Idaho | Rexburg, ID\nSep 2018 - Dec 2021\nNew Jersey Department of Transportation | Transportation Mobility Research Unit Jan 2023 - May 2024\nBrigham Young University-Idaho | Tutoring Center Apr 2021 - Dec 2021\nBrigham Young University-Idaho | Custodial Unit Jan 2019 - Apr 2020\nChurch of Jesus Christ of Latter-day Saints | Full-Time Missionary Aug 2016 - Jul 2018"
+  },
+  {
+    "objectID": "resume.html#areas-of-expertise",
+    "href": "resume.html#areas-of-expertise",
+    "title": "Luis Rivera",
+    "section": "Areas of Expertise",
+    "text": "Areas of Expertise"
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "Luis Rivera",
+    "section": "Education",
+    "text": "Education"
+  },
+  {
+    "objectID": "resume.html#professional-experience",
+    "href": "resume.html#professional-experience",
+    "title": "Luis Rivera",
+    "section": "Professional Experience",
+    "text": "Professional Experience"
+  },
+  {
+    "objectID": "Cleansing_Projects/project1.html",
+    "href": "Cleansing_Projects/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project5.html",
+    "href": "Cleansing_Projects/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics"
+  },
+  {
+    "objectID": "index.html#title-2-header",
+    "href": "index.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics"
+  },
+  {
+    "objectID": "competition.html",
+    "href": "competition.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Competition"
+    ]
+  },
+  {
+    "objectID": "competition.html#title-2-header",
+    "href": "competition.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Competition"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project2.html",
+    "href": "Machine_Learning/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project4.html",
+    "href": "Machine_Learning/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 4"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project3.html",
+    "href": "Machine_Learning/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project2.html",
+    "href": "Full_Stack/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project4.html",
+    "href": "Full_Stack/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 4"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project3.html",
+    "href": "Full_Stack/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Competition/project1.html",
+    "href": "Competition/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Competition/project5.html",
+    "href": "Competition/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 5"
     ]
   }
 ]
