@@ -12,26 +12,26 @@ toc: false
 :::
 
 <ul class="expertise-list">
-  <li>Algorithm tools</li>
-  <li>Design metrics</li>
-  <li>Object-oriented programming</li>
-  <li>Data spreadsheet summary</li>
-  <li>Probability distributions</li>
-  <li>Hypothesis testing</li>
-  <li>R programming</li>
-  <li>Statistical testing</li>
-  <li>Data analysis/evaluation</li>
-  <li>Research techniques</li>
-  <li>Research design</li>
-  <li>Process planning</li>
-  <li>Quality management</li>
-  <li>Forecasting tools</li>
-  <li>Policy analysis</li>
-  <li>SQL commands with joins</li>
-  <li>Database design</li>
-  <li>Data merging</li>
-  <li>HTML proficiency</li>
-  <li>CSS styling proficiency</li>
+  <li>Algorithm Tools</li>
+  <li>Design Metrics</li>
+  <li>Object-oriented Programming</li>
+  <li>Data Spreadsheet Summary</li>
+  <li>Probability Distributions</li>
+  <li>Hypothesis Testing</li>
+  <li>R Programming</li>
+  <li>Statistical Testing</li>
+  <li>Data Analysis/Evaluation</li>
+  <li>Research Techniques</li>
+  <li>Research Design</li>
+  <li>Process Planning</li>
+  <li>Quality Management</li>
+  <li>Forecasting Tools</li>
+  <li>Policy Analysis</li>
+  <li>SQL Commands With Joins</li>
+  <li>Database Design</li>
+  <li>Data Merging</li>
+  <li>HTML Proficiency</li>
+  <li>CSS Styling Proficiency</li>
 </ul>
 
 ::: {.header-box}
@@ -42,11 +42,11 @@ toc: false
 ### MS in Business Analytics and Artificial Intelligence
 :::
 **University of Texas - Dallas** | Dallas, TX  
-**Starting Jan 2026** 
+**Jan 2026 - Dec 2027** 
 
 <ul class="education-list">
   <li>Data Science emphasis</li>
-  <li>Coursework includes: Database Foundations, Advanced Statistics, Data Warehousing, Predictive Analytics, Business Analytics With R, Applied Machine Learning, Big Data, Applied Natural Language Processing, Applied Deep Learning, and AWS Cloud Solution Architecture.  </li>
+  <li>Coursework includes: Database Foundations, Advanced Statistics, Data Warehousing, Predictive Analytics, Business Analytics With R, Applied Machine Learning, Big Data, Applied Natural Language Processing, Applied Deep Learning, and AWS Cloud Solution Architecture.</li>
   <li>Academic Scholarship - Thomas E. Ricks Grant</li>
 </ul>
 
@@ -87,7 +87,7 @@ toc: false
 ::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
 ### Administrative Analyst I
 :::  
-**New Jersey Department of Transportation** | Transportation Mobility Research Unit 
+**New Jersey Department of Transportation** | Transportation Mobility Research Unit  
 **Jan 2023 - May 2024**
 
 <ul class="education-professional-list">
@@ -104,7 +104,7 @@ toc: false
 ::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
 ### Instructor Evaluation Support Specialist/Statistics Tutoring Assistant
 :::    
-**Brigham Young University-Idaho** | Tutoring Center 
+**Brigham Young University-Idaho** | Tutoring Center   
 **Apr 2021 - Dec 2021**  
 
 <ul class="education-professional-list">
@@ -118,7 +118,7 @@ toc: false
 ::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
 ### Custodian
 ::: 
-**Brigham Young University-Idaho** | Custodial Unit
+**Brigham Young University-Idaho** | Custodial Unit  
 **Jan 2019 - Apr 2020**  
 
 <ul class="education-professional-list">
@@ -132,7 +132,7 @@ toc: false
 ::: {style="text-decoration: underline; text-decoration-thickness: 0.05em; text-underline-offset: 0.25em"}
 ### Ambassador
 :::   
-**Church of Jesus Christ of Latter-day Saints** | Full-Time Missionary 
+**Church of Jesus Christ of Latter-day Saints** | Full-Time Missionary  
 **Aug 2016 - Jul 2018**  
 
 <ul class="education-professional-list">
